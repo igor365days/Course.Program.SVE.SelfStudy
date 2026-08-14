@@ -1,44 +1,44 @@
-# Learning Event Model
+# Модель Learning Event
 
-**Document:** Learning.Event.Model  
-**Status:** Canonical project model  
-**Applies to:** Course.Program.SVE.SelfStudy
+**Документ:** Learning.Event.Model  
+**Статус:** Каноническая модель проекта  
+**Применяется к:** Course.Program.SVE.SelfStudy
 
-## 1. Purpose
+## 1. Назначение
 
-A Learning Event is a significant, state-relevant event in the actual learning process. It records what happened, not the full chat transcript.
+Learning Event — значимое событие фактического процесса обучения, влияющее на состояние. Оно фиксирует произошедшее, а не полную стенограмму чата.
 
-Learning Events belong to the learner-state layer and must not be placed in canonical course definitions.
+Learning Events относятся к слою состояния обучающегося и не должны помещаться в канонические определения курса.
 
-## 2. Event principles
+## 2. Принципы событий
 
-1. Record significant learning events, not every message.
-2. Events are chronological.
-3. An event describes an occurrence; it does not replace an assessment record or current state.
-4. Historical events must not be silently rewritten because the current state changed.
-5. Every event is associated with the relevant canonical object when applicable: Section, Lesson, Unit, LCP or CP.
+1. Записывать значимые учебные события, а не каждое сообщение.
+2. События располагать хронологически.
+3. Событие описывает произошедшее; оно не заменяет Assessment Record или текущее состояние.
+4. Исторические события нельзя молча переписывать из-за изменения текущего состояния.
+5. Каждое событие по возможности связывать с соответствующим каноническим объектом: Section, Lesson, Unit, LCP или CP.
 
-## 3. Core event fields
+## 3. Основные поля события
 
-A Learning Event should contain, where applicable:
+Learning Event при необходимости содержит:
 
-- Event ID;
+- идентификатор события;
 - timestamp;
-- event type;
+- тип события;
 - Section ID;
-- source Lesson ID;
+- исходный Lesson ID;
 - Unit ID;
 - LCP/CP ID;
-- event status/result;
-- verification source when relevant;
-- short evidence/reference;
-- remediation or transition information when relevant.
+- статус/результат события;
+- источник проверки;
+- краткое доказательство/ссылку;
+- сведения о коррекции или переходе.
 
-The exact storage representation is implementation-dependent and is not fixed by this document.
+Точное физическое представление зависит от реализации и не фиксируется этим документом.
 
-## 4. Event categories
+## 4. Категории событий
 
-### Navigation
+### Навигация
 
 - `SECTION_STARTED`
 - `LESSON_STARTED`
@@ -49,52 +49,50 @@ The exact storage representation is implementation-dependent and is not fixed by
 - `NEXT_LESSON_OPENED`
 - `NEXT_SECTION_OPENED`
 
-### Learning and remediation
+### Обучение и коррекция
 
 - `UNIT_PRACTICE`
 - `UNIT_REVIEW`
 - `REMEDIATION_STARTED`
 - `REMEDIATION_COMPLETED`
 
-### Verification and assessment
+### Проверка и оценивание
 
 - `UNIT_VERIFIED`
 - `LCP_COMPLETED`
 - `CP_COMPLETED`
 - `RECHECK_REQUIRED`
 
-### User confirmation
+### Подтверждение пользователя
 
 - `USER_CONFIRMATION_REQUESTED`
 - `USER_CONFIRMED`
 
-## 5. Event versus assessment
+## 5. Событие и оценивание
 
-A Learning Event says **what happened**.
+Learning Event сообщает **что произошло**.
 
-An Assessment Record says **what the control result was**.
+Assessment Record сообщает **каков результат контроля**.
 
-A Learning State says **where the learner is now**.
+Learning State сообщает **где сейчас находится обучающийся**.
 
-These must remain separate concepts.
+Это должны оставаться разными понятиями.
 
-## 6. Event versus chat transcript
+## 6. Событие и стенограмма чата
 
-A Learning Session may contain many messages and interactions. These are not automatically Learning Events.
-
-Example:
+Learning Session может содержать много сообщений и взаимодействий. Они не становятся Learning Events автоматически.
 
 ```text
 Learning Session
-├── questions
-├── explanations
-├── exercises
-├── corrections
-├── discussion
-└── significant events
+├── вопросы
+├── объяснения
+├── упражнения
+├── исправления
+├── обсуждение
+└── значимые события
        ├── UNIT_STARTED
        ├── UNIT_VERIFIED
        └── REVIEW_REQUIRED
 ```
 
-The protocol must remain compact enough to represent a long course without becoming a transcript.
+Протокол должен оставаться достаточно компактным, чтобы представлять длительный курс без превращения в стенограмму.
