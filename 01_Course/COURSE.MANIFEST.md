@@ -8,103 +8,73 @@
 
 ## Purpose
 
-This manifest is the navigation map of the canonical course repository.
+This manifest is the navigation map of the canonical course repository. It identifies the authoritative course definition, source materials, Unit and Checkpoint definitions, and project-level specifications.
 
-It identifies the authoritative course definition, the source materials, the canonical definitions of learning units and checkpoints, and the resources used by the course.
-
-The manifest does not contain the learning state of a particular learner. Learning state belongs to the ChatGPT Project.
+The manifest does not contain learner state. Learner state belongs to the ChatGPT Project.
 
 ## Source of Truth
 
-The canonical course program is:
+The current canonical program is:
 
 `01_Course/Course.Program.SVE.SelfStudy.md`
 
-The frozen version 1.0 of the program is:
+The frozen historical version is:
 
 `01_Course/Course.Program.SVE.SelfStudy.v1.0.md`
 
-## Canonical Course Structure
+While the project is pre-launch, the current canonical program may be redesigned. The historical v1.0 file is retained as an archive/reference and is not the active route.
 
-The course is based on:
+## Canonical Route
 
-- **18 source lessons** from the selected textbook;
-- **56 canonical learning units (Unit)**;
-- **5 checkpoints (CP)**.
+The course contains **18 source lessons, 56 Unit and 5 Checkpoints**.
 
-The existing Unit boundaries are part of the canonical course design. They must not be merged, split, or reordered merely for the convenience of the AI assistant or the ChatGPT Project.
+The 18 source lessons are grouped into five sequential sections:
+
+| Section | Source lessons | Unit count | Checkpoint |
+|---|---|---:|---|
+| 1. Основы шведского языка | 1–4 | 17 | CP-1 |
+| 2. Повседневная коммуникация | 5–8 | 12 | CP-2 |
+| 3. Путешествия и ориентирование | 9–11 | 8 | CP-3 |
+| 4. Общественные и культурные ситуации | 12–15 | 9 | CP-4 |
+| 5. Швеция, культура и продвинутые грамматические темы | 16–18 | 10 | CP-5 |
+
+**Route rule:** Unit inside a section are sequential. The final Unit of a section is followed by that section's CP. The next section is not opened until the CP is passed or its remediation protocol is completed.
 
 ## Repository Map
 
 ### `00_Project/`
 
-Project-level specifications, methodology, learning objectives, AI regulations, and course-design documents.
-
-These documents define how the course is designed and how the AI learning system is expected to operate. They are not learner progress data.
+Project architecture, methodology, learning objectives, AI regulations, Unit standard and Orchestrator specification.
 
 ### `01_Course/`
 
-Canonical course definition and versioned course programs.
-
-Primary files:
-
-- `Course.Program.SVE.SelfStudy.md` — current canonical program;
-- `Course.Program.SVE.SelfStudy.v1.0.md` — frozen version 1.0;
-- `COURSE.MANIFEST.md` — this navigation map.
+Canonical course definition and versioned programs.
 
 ### `02_Source/`
 
-Source analysis and source materials from which the canonical course was developed.
+Source analysis and materials used to develop the course.
 
 ### `03_Lessons/`
 
-Canonical definitions of individual learning units and checkpoints.
-
-Each Unit has its own canonical definition. These files describe what the Unit is intended to accomplish and how it is to be conducted. They do not contain the learner's actual progress or chat history.
+Canonical definitions of all 56 Unit and 5 Checkpoints. Files are grouped by the five course sections.
 
 ### `04_Resources/`
 
-Canonical supporting resources used by the course.
+Canonical supporting resources.
 
-## Unit Identification
+## Unit Identity
 
-Each learning unit retains its canonical identifier from the course program:
+Unit identifiers retain the source-lesson numbering (`1.1` … `18.4`). Their section membership is defined by the current canonical program.
 
-`1.1`, `1.2`, `1.3`, ... `18.4`
-
-The identifier is stable within the course version and is used to connect:
-
-- the canonical program;
-- the Unit definition in `03_Lessons/`;
-- the corresponding ChatGPT Project working chat;
-- the learner's progress record.
-
-## Checkpoints
-
-The five checkpoints are canonical course elements and are maintained separately from Units.
-
-Their definitions belong in `03_Lessons/` alongside the Unit definitions, using the identifiers `CP-1` through `CP-5`.
+A Unit file describes what the learner must learn and how mastery is verified. It does not contain individual learner progress or chat history.
 
 ## Separation of Concerns
 
-The repository defines the course.
-
-The ChatGPT Project defines the practical state of a particular learner's progression through that course.
-
-Therefore the following do **not** belong in the canonical repository:
-
-- current learner status;
-- completion dates;
-- individual errors;
-- personal learning difficulties;
-- results of individual exercises;
-- chat history;
-- personal repetition plans.
-
-Those belong to the learning state maintained by the ChatGPT Project.
+**GitHub:** canonical course and rules.  
+**ChatGPT Project:** practical learning process and learner state.  
+**Learning Session:** actual study interaction.  
+**Course Orchestrator:** route control and transition validation.
 
 ## Pre-launch Rule
 
-The course is currently in pre-launch state. Structural and content changes may be made freely while the canonical architecture is being finalized.
-
-Once real learning begins, changes to the canonical course structure should be versioned and handled deliberately.
+The project is still pre-launch. Structural changes may be made freely. Once real learning begins, canonical route changes require deliberate versioning.
