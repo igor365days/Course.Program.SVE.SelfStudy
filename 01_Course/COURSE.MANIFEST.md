@@ -6,75 +6,68 @@
 **Status:** Pre-launch  
 **Current version:** 1.0
 
-## Purpose
+## Canonical route
 
-This manifest is the navigation map of the canonical course repository. It identifies the authoritative course definition, source materials, Unit and Checkpoint definitions, and project-level specifications.
+The course contains **18 source lessons, 56 Unit, 18 lesson checkpoints (LCP) and 5 section checkpoints (CP)**.
 
-The manifest does not contain learner state. Learner state belongs to the ChatGPT Project.
+Each Unit belongs to exactly one source lesson and exactly one course section. Units inside a lesson are sequential. After the final Unit of each source lesson, its **LCP** is conducted. After the final lesson of a section, its **CP** is conducted. A passed CP opens the next section.
 
-## Source of Truth
+| Section | Source lessons | Units | Lesson checkpoints | Section checkpoint |
+|---|---|---:|---:|---|
+| 1. Основы шведского языка | 1–4 | 17 | LCP-01–04 | CP-1 |
+| 2. Повседневная коммуникация | 5–8 | 12 | LCP-05–08 | CP-2 |
+| 3. Путешествия и ориентирование | 9–11 | 8 | LCP-09–11 | CP-3 |
+| 4. Общественные и культурные ситуации | 12–15 | 9 | LCP-12–15 | CP-4 |
+| 5. Швеция, культура и продвинутые грамматические темы | 16–18 | 10 | LCP-16–18 | CP-5 |
 
-The current canonical program is:
+## Route rule
 
-`01_Course/Course.Program.SVE.SelfStudy.md`
+```text
+Unit → Unit → ... → LCP → next lesson
+                       ↓
+             final lesson of section
+                       ↓
+                      CP
+                       ↓
+                next section
+```
 
-The frozen historical version is:
+LCP is an integral control point for the corresponding source lesson. It verifies integrated use of the material of that lesson and is not a learner-progress log.
 
-`01_Course/Course.Program.SVE.SelfStudy.v1.0.md`
+CP is an integral control point for the whole section and is the mandatory transition gate between sections.
 
-While the project is pre-launch, the current canonical program may be redesigned. The historical v1.0 file is retained as an archive/reference and is not the active route.
+Failure or insufficient performance at either level triggers targeted remediation and recheck. It does not automatically require repeating material that has already been demonstrated as mastered.
 
-## Canonical Route
+## Source-lesson mapping
 
-The course contains **18 source lessons, 56 Unit and 5 Checkpoints**.
+Unit identifiers retain the book's lesson numbering (`1.1` … `18.4`). The number before the dot identifies the source lesson and the number after the dot identifies the Unit within that lesson.
 
-The 18 source lessons are grouped into five sequential sections:
-
-| Section | Source lessons | Unit count | Checkpoint |
-|---|---|---:|---|
-| 1. Основы шведского языка | 1–4 | 17 | CP-1 |
-| 2. Повседневная коммуникация | 5–8 | 12 | CP-2 |
-| 3. Путешествия и ориентирование | 9–11 | 8 | CP-3 |
-| 4. Общественные и культурные ситуации | 12–15 | 9 | CP-4 |
-| 5. Швеция, культура и продвинутые грамматические темы | 16–18 | 10 | CP-5 |
-
-**Route rule:** Unit inside a section are sequential. The final Unit of a section is followed by that section's CP. The next section is not opened until the CP is passed or its remediation protocol is completed.
-
-## Repository Map
+## Repository map
 
 ### `00_Project/`
-
-Project architecture, methodology, learning objectives, AI regulations, Unit standard and Orchestrator specification.
+Project architecture, methodology, objectives, regulations, Unit standard, lesson-checkpoint standard and Orchestrator specification.
 
 ### `01_Course/`
-
 Canonical course definition and versioned programs.
 
 ### `02_Source/`
-
 Source analysis and materials used to develop the course.
 
 ### `03_Lessons/`
-
-Canonical definitions of all 56 Unit and 5 Checkpoints. Files are grouped by the five course sections.
+Canonical definitions of all 56 Unit, 18 LCP and 5 CP, grouped by the five course sections.
 
 ### `04_Resources/`
-
 Canonical supporting resources.
 
-## Unit Identity
-
-Unit identifiers retain the source-lesson numbering (`1.1` … `18.4`). Their section membership is defined by the current canonical program.
-
-A Unit file describes what the learner must learn and how mastery is verified. It does not contain individual learner progress or chat history.
-
-## Separation of Concerns
+## Separation of concerns
 
 **GitHub:** canonical course and rules.  
 **ChatGPT Project:** practical learning process and learner state.  
 **Learning Session:** actual study interaction.  
 **Course Orchestrator:** route control and transition validation.
 
-## Pre-launch Rule
+The mechanism and format for storing learner progress are intentionally **not fixed by this structural definition** and will be designed separately.
+
+## Pre-launch rule
 
 The project is still pre-launch. Structural changes may be made freely. Once real learning begins, canonical route changes require deliberate versioning.
