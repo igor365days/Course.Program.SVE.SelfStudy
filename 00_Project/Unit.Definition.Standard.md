@@ -1,161 +1,107 @@
 # Unit Definition Standard
 
-**Document:** Unit.Definition.Standard
-**Status:** Canonical project standard
+**Document:** Unit.Definition.Standard  
+**Status:** Canonical project standard  
 **Applies to:** Course.Program.SVE.SelfStudy
 
 ## 1. Purpose
 
-This document defines the standard structure of a canonical learning-unit definition stored in `03_Lessons`.
+A Unit file defines what the learner must study, the intended learning result, the learning sequence, practice and Unit-level verification.
 
-A Unit file describes **what the learner must study, the intended learning result, how the unit is to be conducted, and how mastery is verified**.
-
-It does not record the personal history or actual result of a particular learner. That information belongs to the ChatGPT Project and its Learning Progress system.
+It does not contain individual learner progress, chat history or actual assessment results.
 
 ## 2. Identity
 
-Each Unit must have a stable canonical identifier corresponding to the course program, for example:
+Each Unit has a stable identifier such as `1.1`, `8.3` or `18.4`.
 
-- `1.1`
-- `1.2`
-- `8.3`
-- `18.4`
+The first number identifies the **source lesson of the book**; the second identifies the Unit within that lesson.
 
-The identifier must not be changed merely for organizational convenience.
+Each Unit definition must identify:
 
-Each Unit file should use a predictable filename based on its identifier, for example:
+- Unit ID;
+- Unit title;
+- source lesson;
+- course section;
+- position in the route;
+- related LCP.
 
-`03_Lessons/01/1.1.md`
+## 3. Standard Unit structure
 
-## 3. Standard Unit Structure
+Each Unit should contain, where applicable:
 
-Each canonical Unit file should contain the following sections, where applicable.
+1. Identity
+2. Learning Objective
+3. Canonical Content
+4. Learning Sequence
+5. Practice Requirements
+6. Verification Criteria
+7. Typical Difficulties
+8. Transition / prerequisites
+9. Canonical References
 
-### 3.1. Identity
+The normal learning sequence is:
 
-- Unit ID
-- Unit title
-- Course version
-- Source lesson/chapter
-- Position in the course
+`Introduction → Explanation/analysis → Guided practice → Independent/communicative task → Verification`.
 
-### 3.2. Learning Objective
+The sequence may adapt to the material without changing the Unit's canonical position or purpose.
 
-State clearly what the learner should be able to know, recognize, understand, produce, or use after completing the Unit.
+## 4. Unit verification
 
-The objective must describe an observable learning result rather than merely list topics.
+Unit verification determines whether the learner has demonstrated the result required by that Unit.
 
-### 3.3. Canonical Content
+It may test recognition, recall, accurate reproduction, transformation, independent production, communicative use or other skills appropriate to the Unit.
 
-Describe the material that belongs to this Unit according to the canonical course program and source material.
+Completion of a Unit does not by itself replace the LCP of its source lesson.
 
-Include, as applicable:
+## 5. Relationship to lesson checkpoint
 
-- vocabulary;
-- grammar;
-- pronunciation;
-- structures and patterns;
-- texts;
-- communicative situations;
-- cultural or contextual information.
+Every Unit belongs to exactly one source lesson and therefore to exactly one **LCP (Lesson Checkpoint)**.
 
-Do not introduce unrelated material merely to make the Unit more comprehensive.
+The LCP is conducted after the final Unit of that source lesson and tests integrated use of the important material of the whole lesson.
 
-### 3.4. Learning Sequence
+```text
+Unit 1.1 ─┐
+Unit 1.2  │
+Unit 1.3  ├── LCP-01
+Unit 1.4  │
+Unit 1.5 ─┘
+```
 
-Describe the intended progression through the Unit. The normal model is:
+Unit verification answers: **Can the learner demonstrate the result of this Unit?**
 
-1. Introduction
-2. Explanation / analysis
-3. Guided practice
-4. Independent or communicative task
-5. Verification
+LCP answers: **Can the learner integrate and independently use the important material of the whole source lesson?**
 
-The sequence may be adapted to the specific Unit while preserving its learning objective and canonical position.
+## 6. Relationship to section checkpoint
 
-### 3.5. Practice Requirements
+The LCP is below the section-level CP in the control hierarchy:
 
-Specify the practice required to establish the intended skill or knowledge.
+`Unit verification → LCP → CP`
 
-Practice should, where appropriate, progress from controlled work toward independent use.
+CP integrates the material of all source lessons in the section and controls transition to the next section.
 
-### 3.6. Verification Criteria
-
-Define what evidence is sufficient to regard the Unit as successfully completed from a learning perspective.
-
-Verification should test actual ability rather than simple exposure to the material.
-
-Depending on the Unit, verification may include:
-
-- recognition;
-- recall;
-- accurate reproduction;
-- transformation;
-- independent production;
-- communicative use;
-- application without continuous reference to the source material.
-
-### 3.7. Typical Difficulties
-
-Record known or anticipated difficulties that are useful for conducting the Unit.
-
-This section describes expected learning risks, not the personal errors of a particular learner.
-
-Personal errors belong in Learning Progress.
-
-### 3.8. Transition
-
-State the conditions or knowledge that connect this Unit to the following part of the course.
-
-Where relevant, identify prerequisites from earlier Units.
-
-### 3.9. Canonical References
-
-List the authoritative sources used to define the Unit, such as:
-
-- the canonical course program;
-- the corresponding source lesson;
-- approved source materials;
-- approved course resources.
-
-## 4. Separation of Responsibilities
-
-The Unit definition and the learner's actual progress must remain separate.
+## 7. Separation of responsibilities
 
 ```text
 Canonical Unit
     ↓
-What should be learned
+Learning Session
     ↓
-ChatGPT working session
+Unit verification
     ↓
-What the learner actually did
+LCP of source lesson
+    ↓
+Section CP
     ↓
 Learning Progress
-    ↓
-What the learner actually mastered
 ```
 
-A Unit file must not become a progress journal.
+The canonical definitions remain in GitHub. Actual learner results are handled separately.
 
-A working chat must not become the canonical definition of the Unit.
+## 8. Integrity rules
 
-Learning Progress must not redefine the canonical Unit.
-
-## 5. Integrity Rules
-
-- Preserve the canonical Unit identifier.
-- Preserve the Unit's position in the course.
-- Do not silently merge Units.
-- Do not silently split Units.
-- Do not silently reorder Units.
-- Do not add material that changes the intended scope of the Unit.
-- Improvements to the course itself must be treated as explicit changes to the canonical course.
-
-## 6. Relationship to ChatGPT Project
-
-The ChatGPT Project uses the Unit definition as the authoritative plan for a particular learning session.
-
-The Project may adapt the delivery method, amount of practice, explanations, pacing, and repetition to the learner, provided that the canonical learning objective and required learning result are preserved.
-
-The Project must use the Unit definition together with the learner's current Learning Progress to determine the next appropriate action.
+- Preserve Unit ID and route position.
+- Do not silently merge, split or reorder Units.
+- Do not move a Unit between source lessons merely for convenience.
+- Do not remove the Unit's relation to its LCP.
+- Do not place learner progress in the canonical Unit file.
+- Changes to the canonical route are explicit course changes.
