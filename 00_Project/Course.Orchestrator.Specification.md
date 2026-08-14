@@ -1,259 +1,180 @@
 # Course Orchestrator Specification
 
 **Project:** Course.Program.SVE.SelfStudy  
-**Specification:** v1.1  
+**Specification:** v1.2  
 **Status:** Pre-launch architecture
 
 ## 1. Purpose
 
-Course Orchestrator is the logical control layer of the learning system. It organizes the learner's route through the canonical course, validates transitions, controls Unit and Checkpoint progression, and maintains an accurate representation of actual learning state.
+Course Orchestrator is the logical control layer of the learning system. It organizes the learner's route through the canonical course, validates transitions, controls Unit, LCP and CP progression, and maintains an accurate representation of actual learning state.
 
 The objective is maximum sustainable learning result, not maximum speed of completion.
 
-## 2. Canonical Route
+## 2. Canonical route
 
-The canonical course contains 18 source lessons, 56 Unit and 5 sections. Each Unit belongs to exactly one section. Unit inside a section are sequential. Each section ends with exactly one Checkpoint.
-
-```text
-SECTION 1 → Unit → ... → Unit → CP-1
-SECTION 2 → Unit → ... → Unit → CP-2
-SECTION 3 → Unit → ... → Unit → CP-3
-SECTION 4 → Unit → ... → Unit → CP-4
-SECTION 5 → Unit → ... → Unit → CP-5
-```
-
-A passed CP is the transition gate to the next section. Failed or insufficient CP results require remediation and recheck before transition.
-
-## 3. System Layers
+The course contains **18 source lessons, 56 Unit, 18 LCP and 5 sections with 5 CP**.
 
 ```text
-GitHub — Canonical Course
-        ↓
-Course Orchestrator
-        ↓
-Learning Session / Checkpoint Session
-        ↓
-Learning State + Evidence
+Lesson 1: Unit → ... → LCP-01
+Lesson 2: Unit → ... → LCP-02
+...
+Lesson 18: Unit → ... → LCP-18
+
+After the final lesson of each section:
+LCP → CP → next section
 ```
 
-GitHub defines what and in what order to learn. The Project organizes the practical learning process for one learner.
+A Unit belongs to exactly one source lesson and one section. Unit inside a lesson are sequential.
 
-## 4. Core Principle
-
-Separate LLM reasoning from state transition.
+## 3. Control hierarchy
 
 ```text
-LLM analysis
-    ↓
-proposed action
-    ↓
-Policy / State validation
-    ↓
-Orchestrator
-    ↓
-state transition
+UNIT VERIFICATION
+       ↓
+LCP — lesson-level integration
+       ↓
+CP — section-level integration
+       ↓
+NEXT SECTION
 ```
 
-A proposed action is not automatically a valid transition.
+### Unit verification
 
-## 5. Responsibilities
+Controls the result of one Unit.
+
+### LCP
+
+Controls integrated and independent use of the important material of one complete source lesson. It is mandatory after the final Unit of that lesson.
+
+### CP
+
+Controls integrated learning of the complete section. It is mandatory after the final lesson LCP of that section and is the transition gate to the next section.
+
+## 4. Responsibilities
 
 The Orchestrator:
 
-- identifies the current section and route element;
-- identifies the current Unit or CP;
+- identifies the current section, source lesson and route element;
 - validates prerequisites and route order;
 - determines the next eligible action;
-- coordinates the Learning Session;
-- receives and evaluates evidence;
-- organizes review/remediation;
-- controls Unit completion;
-- starts the section CP after the final Unit;
+- coordinates Learning Sessions;
+- validates Unit completion;
+- starts LCP after the final Unit of a source lesson;
+- evaluates LCP results and organizes targeted remediation/recheck;
+- starts CP after the final LCP of a section;
 - blocks the next section until CP requirements are satisfied;
-- records or requests recording of relevant learning state;
-- gives the learner one clear next action.
+- determines the next concrete learner action.
 
-It does not rewrite the canonical course, teach the whole course itself, or declare mastery solely from a learner claim.
+It does not rewrite the canonical course or declare mastery solely from a learner claim.
 
-## 6. Learning Session Architecture
+## 5. Remediation principle
 
-A Unit is a **learning object**, not a required separate chat.
+Failure at LCP or CP does not automatically mean repeating the whole preceding route.
 
-The default Project implementation uses a continuous Learning Session chat for sequential Unit work. A new Learning Session may be started only when the current chat becomes too large, loses useful context, or another operational reason makes rotation appropriate.
+The Orchestrator should identify the demonstrated gaps, map them to relevant Unit or lesson material, organize targeted remediation and then conduct a recheck.
 
-The learner should not be required to create a new chat for every Unit.
+## 6. Learning Session architecture
 
-A Checkpoint may use the same Learning Session or a separate Checkpoint Session when that is operationally preferable. This does not change the canonical route.
+A Unit is a learning object, not a required separate chat.
 
-## 7. Unit States
+The default Project implementation uses a continuous Learning Session for sequential Unit work and, where practical, LCP work. A new session may be started for operational reasons such as excessive size or loss of useful context.
 
-```text
-NOT_STARTED
-    ↓
-IN_PROGRESS
-    ├── REVIEW_REQUIRED → IN_PROGRESS
-    └── VERIFIED → COMPLETED
-```
+The learner should not be required to create a separate chat for every Unit.
 
-A Unit becomes `COMPLETED` only when its canonical verification criteria are satisfied.
+## 7. States
 
-## 8. Checkpoint States
+### Unit
 
 ```text
-NOT_STARTED
-    ↓
-IN_PROGRESS
-    ├── FAILED → REMEDIATION → RECHECK
-    └── PASSED → COMPLETED → NEXT SECTION
+NOT_STARTED → IN_PROGRESS → VERIFIED → COMPLETED
+                         ↘ REVIEW_REQUIRED → IN_PROGRESS
 ```
 
-## 9. Unit Completion Evidence
-
-A logical result should contain, as applicable:
+### LCP
 
 ```text
-unit_id
-section_id
-status
-understanding
-controlled_practice
-independent_performance
-verification
-errors
-review_required
-recommended_next_action
+NOT_STARTED → IN_PROGRESS → PASSED → COMPLETED
+                         ↘ FAILED → REMEDIATION → RECHECK
 ```
 
-The exact evidence requirements come from the Unit definition.
-
-## 10. Checkpoint Evidence
-
-A CP result should contain:
+### CP
 
 ```text
-checkpoint_id
-section_id
-covered_route_range
-status
-knowledge_result
-skill_result
-critical_gaps
-remediation_required
-next_section_eligible
+NOT_STARTED → IN_PROGRESS → PASSED → COMPLETED → NEXT SECTION
+                         ↘ FAILED → REMEDIATION → RECHECK
 ```
 
-## 11. Policy Checks
+## 8. Evidence
+
+Unit evidence may include understanding, controlled practice, independent performance, verification and errors.
+
+LCP evidence should establish integrated use of the lesson material, independent performance and critical gaps.
+
+CP evidence should establish integrated use of the section material, critical gaps, remediation requirements and eligibility for the next section.
+
+The exact evidence format is not fixed yet; learner-state storage will be designed separately.
+
+## 9. Policy checks
 
 Before a transition, verify:
 
-1. Is the requested element the current canonical route element?
-2. Are prerequisites satisfied?
-3. Are mandatory learning stages complete?
-4. Is sufficient evidence available?
-5. Has required verification passed?
-6. Are critical unresolved deficiencies absent?
-7. If this is a CP, has the whole section route been completed?
-8. Is the next section locked or unlocked according to the CP result?
+1. Current canonical route element.
+2. Required Unit prerequisites.
+3. Required Unit verification.
+4. For LCP: all Unit of the source lesson are eligible for lesson control.
+5. For CP: all lessons in the section have passed their LCP.
+6. Required assessment evidence is sufficient.
+7. Critical unresolved deficiencies are handled.
+8. The proposed transition matches the canonical route.
 
-Example:
-
-```text
-PROPOSED: OPEN SECTION 2
-
-POLICY CHECK:
-✓ Section 1 Unit completed
-✓ CP-1 completed
-✓ CP-1 passed
-
-RESULT: ALLOW
-```
-
-## 12. Logical Actions
+## 10. Logical actions
 
 ### Navigation
 - `GET_CURRENT_STATE`
 - `GET_CURRENT_SECTION`
+- `GET_CURRENT_LESSON`
 - `GET_CURRENT_ROUTE_ELEMENT`
 - `GET_NEXT_ROUTE_ELEMENT`
 
-### Learning
+### Unit
 - `START_UNIT`
 - `CONTINUE_UNIT`
 - `REVIEW_UNIT`
-- `RETRY_UNIT`
-
-### Verification
 - `VERIFY_UNIT`
 - `COMPLETE_UNIT`
 
-### Checkpoints
-- `START_CHECKPOINT`
-- `COMPLETE_CHECKPOINT`
-- `REMEDIATION`
-- `RECHECK`
+### Lesson checkpoint
+- `START_LCP`
+- `COMPLETE_LCP`
+- `LCP_REMEDIATION`
+- `LCP_RECHECK`
+
+### Section checkpoint
+- `START_CP`
+- `COMPLETE_CP`
+- `CP_REMEDIATION`
+- `CP_RECHECK`
 - `OPEN_NEXT_SECTION`
 
-### State and Evidence
+### State
 - `READ_PROGRESS`
 - `RECORD_EVIDENCE`
 - `UPDATE_PROGRESS`
 
 These are logical protocol actions, not claims that ChatGPT Project currently exposes a programmable state-machine API.
 
-## 13. Progress Model
+## 11. Separation of concerns
 
-Progress is the compact current state of the learner, not a copy of the course and not a transcript of conversations.
+GitHub defines the canonical route and control objects. ChatGPT Project organizes actual learning. The mechanism and format for storing learner progress remain a separate design task.
 
-At minimum it must allow the Orchestrator to determine:
-
-- current section;
-- current route element;
-- Unit/CP statuses;
-- unresolved remediation;
-- persistent important errors;
-- latest verified evidence;
-- next eligible action;
-- section/CP transition status.
-
-## 14. Project Implementation
-
-The initial implementation uses Project Instructions, a dedicated Orchestrator chat, a compact Progress representation and canonical GitHub materials.
-
-Project Sources can preserve useful snapshots, but ordinary Project chats cannot be assumed to edit an existing Source or automatically create a new Source. Therefore Sources are not treated as the transactional state store.
-
-The learner should perform as little interface administration as possible. In particular, creating a separate chat for every Unit is not a requirement.
-
-## 15. Future Software Implementation
-
-The logical protocol remains compatible with a real software implementation:
-
-```text
-LLM
- ↓
-proposed action / tool call
- ↓
-Policy Layer
- ↓
-Course Orchestrator
- ↓
-State Store
- ↓
-Learning Session / tools
- ↓
-Evidence
- ↓
-Orchestrator
-```
-
-## 16. Design Principles
+## 12. Design principles
 
 1. Canonical course and learner state are different things.
-2. Sections are route-control units; CP is the section transition gate.
+2. Unit, LCP and CP are different control levels.
 3. Unit and chat are different concepts.
-4. One Learning Session may contain many sequential Unit.
-5. LLM reasoning and state transition are different responsibilities.
-6. Completion requires evidence.
-7. CP completion controls section transition.
-8. The learner should not manually manage the learning route.
-9. Progress remains compact and operational.
-10. The architecture must remain transferable to a future software Orchestrator.
+4. Completion requires evidence.
+5. LCP controls progression between source lessons.
+6. CP controls progression between sections.
+7. Higher-level failure triggers targeted remediation, not automatic repetition of everything.
+8. The learner should not manually reconstruct the route.
+9. The logical protocol must remain compatible with a future software Orchestrator.
