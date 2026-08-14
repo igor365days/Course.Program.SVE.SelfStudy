@@ -1,59 +1,59 @@
-# Learning Progress Protocol
+# Протокол Progress обучения
 
-**Document:** Learning.Progress.Protocol  
-**Status:** Canonical project protocol  
-**Applies to:** Course.Program.SVE.SelfStudy
+**Документ:** Learning.Progress.Protocol  
+**Статус:** Канонический протокол проекта  
+**Применяется к:** Course.Program.SVE.SelfStudy
 
-## 1. Purpose
+## 1. Назначение
 
-This protocol defines how actual learner progress is conceptually represented and how learning events, assessment records and current state interact.
+Этот протокол определяет, как концептуально представляется фактический Progress обучающегося и как взаимодействуют учебные события, записи оценивания и текущее состояние.
 
-It does not define the physical storage mechanism.
+Он не определяет физический механизм хранения.
 
-## 2. Three-layer learner-state model
+## 2. Трёхслойная модель состояния обучающегося
 
 ```text
 LEARNING EVENT
-What happened?
+Что произошло?
         ↓
 ASSESSMENT RECORD
-What was the result of control?
+Каков результат контроля?
         ↓
 LEARNING STATE
-Where is the learner now?
+Где сейчас находится обучающийся?
         ↓
 ORCHESTRATOR DECISION
-What is the next permitted action?
+Какое следующее действие разрешено?
 ```
 
 ## 3. Learning Event
 
-A Learning Event records a significant state-relevant occurrence. It is not a transcript of the chat.
+Learning Event фиксирует значимое событие, влияющее на состояние. Это не стенограмма чата.
 
-Events should be compact, chronological and associated with the relevant canonical object.
+События должны быть компактными, хронологическими и связанными с соответствующим каноническим объектом.
 
 ## 4. Assessment Record
 
-An Assessment Record captures the actual result of a Unit verification, LCP or CP.
+Assessment Record содержит фактический результат проверки Unit, LCP или CP.
 
-It must preserve the distinction between:
+Он должен сохранять различие между:
 
-- task execution;
-- verification source;
-- assessment result;
-- deficiencies;
-- remediation;
-- progression decision.
+- выполнением задания;
+- источником проверки;
+- результатом оценивания;
+- недостатками;
+- коррекцией;
+- решением о продвижении.
 
 ## 5. Learning State
 
-Learning State is the current operational picture derived from events and assessment records. It identifies the current route position, completed prerequisites, unresolved conditions and next permitted action.
+Learning State — текущее оперативное представление, полученное из событий и записей оценивания. Оно определяет текущую позицию на маршруте, выполненные предварительные условия, нерешённые состояния и следующее разрешённое действие.
 
-## 6. Verification policy
+## 6. Политика проверки
 
-The applicable verification method is determined by the canonical `Assessment.Verification.Policy` according to the type of control component.
+Применяемый способ проверки определяется канонической `Assessment.Verification.Policy` в соответствии с типом компонента контроля.
 
-The principal methods are:
+Основные способы:
 
 ```text
 AI_VERIFIED
@@ -61,13 +61,13 @@ USER_CONFIRMED
 COMBINED
 ```
 
-Actual learner records use the applicable verification source and must never misrepresent user confirmation as AI verification.
+В фактических записях обучающегося используется соответствующий источник проверки. Подтверждение пользователя никогда нельзя представлять как AI-проверку.
 
-## 7. User confirmation
+## 7. Подтверждение пользователя
 
-When a required task cannot be reliably verified by AI, the Orchestrator must request explicit user confirmation.
+Если требуемое задание нельзя надёжно проверить средствами AI, Orchestrator должен запросить явное подтверждение пользователя.
 
-Conceptually:
+Концептуально:
 
 ```text
 Required task
@@ -81,19 +81,19 @@ USER_CONFIRMED
 Assessment may continue
 ```
 
-A user confirmation confirms execution of the required action. It is not automatically equivalent to proof of mastery.
+Подтверждение пользователя подтверждает выполнение требуемого действия. Само по себе оно не является автоматическим доказательством уровня освоения.
 
-## 8. Assessment completion
+## 8. Завершение оценивания
 
-A control point can be completed only when all mandatory components have acceptable evidence according to the canonical verification policy.
+Контрольная точка может быть завершена только тогда, когда все обязательные компоненты имеют приемлемые доказательства согласно канонической политике проверки.
 
-`NOT_VERIFIED` on a mandatory component blocks completion.
+`NOT_VERIFIED` для обязательного компонента блокирует завершение.
 
-Assessment success and verification source are separate fields.
+Результат оценивания и источник проверки — отдельные поля.
 
-## 9. Remediation
+## 9. Коррекция
 
-If a control fails or identifies a material deficiency:
+Если контроль не пройден или выявлен существенный недостаток:
 
 ```text
 FAILED / DEFICIENCY
@@ -105,33 +105,34 @@ RECHECK
 UPDATED ASSESSMENT RECORD
 ```
 
-The original result remains part of history.
+Исходный результат остаётся частью истории.
 
-## 10. Historical integrity
+## 10. Историческая целостность
 
-Learning history is append-oriented. A new result or recheck must not silently erase an earlier result.
+История обучения ведётся с добавлением новых записей. Новый результат или повторная проверка не должны молча стирать предыдущий результат.
 
-Current state may change, but historical events and assessment results remain distinguishable.
+Текущее состояние может изменяться, но исторические события и результаты оценивания должны оставаться различимыми.
 
-## 11. Canonical versus learner state
+## 11. Каноническое состояние и состояние обучающегося
 
 ```text
 GITHUB
-  = canonical course, route and verification policy
+  = канонический курс, маршрут и политика проверки
 
 CHATGPT PROJECT / OTHER STATE LAYER
-  = actual learner events, assessment results and current state
+  = фактические события обучающегося, результаты оценивания и текущее состояние
 ```
 
-The physical implementation of the learner-state layer is intentionally deferred until the capabilities and constraints of the chosen platform are fully evaluated.
+Физическая реализация слоя состояния обучающегося была намеренно отложена до полной оценки возможностей и ограничений выбранной платформы. Для текущей реализации Progress обучающегося хранится в GitHub `04_Progress/`.
 
-## 12. Non-goals
+## 12. Что не входит в протокол
 
-This protocol does not:
+Этот протокол:
 
-- define a database schema;
-- require one file per Unit;
-- require one chat per Unit;
-- treat Project Sources as a mutable database;
-- store chat transcripts as Learning Events;
-- place learner-specific results into canonical course files.
+- не определяет схему базы данных;
+- не требует отдельного файла для каждого Unit;
+- не требует отдельного чата для каждого Unit;
+- не рассматривает Project Sources как изменяемую базу данных;
+- не сохраняет стенограммы чатов как Learning Events;
+- не помещает результаты конкретного обучающегося в канонические файлы курса;
+- не использует историю чатов как постоянное общее состояние между чатами.
