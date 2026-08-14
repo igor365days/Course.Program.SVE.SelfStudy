@@ -1,54 +1,78 @@
 # Course.Program.SVE.SelfStudy
 
-## Canonical Course Program
+## Каноническая программа
 
-**Status:** Pre-launch
-**Current version:** 1.0
-**Source:** Swedish course based on the selected source textbook and its structured adaptation for self-study.
+**Статус:** Pre-launch  
+**Текущая версия:** 1.0  
+**Основа:** Е. Л. Жильцова, «Шведский язык. Самоучитель», 2-е издание, 2014.
 
-## Purpose
+## Назначение
 
-Course.Program.SVE.SelfStudy is a structured self-study course designed to organize the learner's actions for attentive, sequential, and complete learning, with continuous control of the learning process and results.
+Курс организует действия учащегося для внимательного, полного и последовательного обучения с постоянным контролем фактического результата. Цель — не скорость прохождения, а максимальный устойчивый результат обучения.
 
-The goal is not merely to complete lessons, but to achieve the maximum sustainable learning result.
+## Каноническая структура
 
-## Canonical Structure
+18 исходных уроков книги организованы в **5 последовательных разделов**. Все **56 Unit** относятся ровно к одному разделу. Каждый раздел заканчивается одной обязательной контрольной точкой (CP).
 
-The course is based on **18 source lessons** and is organized into **56 canonical learning units (Unit)** and **5 checkpoints (CP)**.
+**Маршрут:** `Раздел → Unit → Unit → ... → CP → следующий раздел`.
 
-The canonical Unit structure is preserved as designed. Units are not merged, split, or reordered merely for convenience of the AI assistant or the ChatGPT Project.
+Контрольная точка является границей перехода. Следующий раздел становится доступен только после успешного прохождения соответствующего CP или установленной корректирующей процедуры.
 
-## Learning Unit Model
+## Раздел 1 — Основы шведского языка
 
-Each Unit is an independent element of the canonical learning route. Depending on the Unit, its plan may include:
+**Источники книги:** Уроки 1–4  
+**Unit:** 1.1–1.5, 2.1–2.4, 3.1–3.4, 4.1–4.4  
+**Количество:** 17  
+**Контроль:** CP-1
 
-1. Introduction
-2. Explanation / analysis
-3. Guided practice
-4. Independent or communicative task
-5. Verification
-6. Result fixation
+## Раздел 2 — Повседневная коммуникация
 
-The exact implementation may be adapted to the specific Unit while preserving its canonical purpose and position in the course.
+**Источники книги:** Уроки 5–8  
+**Unit:** 5.1–5.3, 6.1–6.3, 7.1–7.3, 8.1–8.3  
+**Количество:** 12  
+**Контроль:** CP-2
 
-## Learning Control
+## Раздел 3 — Путешествия и ориентирование
 
-The course is designed to be used together with a learning environment that:
+**Источники книги:** Уроки 9–11  
+**Unit:** 9.1–9.4, 10.1–10.2, 11.1–11.2  
+**Количество:** 8  
+**Контроль:** CP-3
 
-- maintains sequential progression;
-- verifies actual learning rather than simple completion;
-- identifies errors and gaps;
-- organizes targeted repetition;
-- evaluates readiness for progression;
-- conducts checkpoints;
-- records the current learning state.
+## Раздел 4 — Общественные и культурные ситуации
 
-The canonical course defines **what and in what sequence to study**. The ChatGPT Project defines **how the particular learner practically progresses through the course**.
+**Источники книги:** Уроки 12–15  
+**Unit:** 12.1–12.2, 13.1–13.2, 14.1–14.2, 15.1–15.3  
+**Количество:** 9  
+**Контроль:** CP-4
 
-## Course Route
+## Раздел 5 — Швеция, культура и продвинутые грамматические темы
 
-The canonical route consists of:
+**Источники книги:** Уроки 16–18  
+**Unit:** 16.1–16.4, 17.1–17.2, 18.1–18.4  
+**Количество:** 10  
+**Контроль:** CP-5
 
-**18 source lessons → 56 learning units → 5 checkpoints**.
+## Методическая модель Unit
 
-The detailed structure of the Units and checkpoints is maintained in the canonical course materials and corresponding lesson definitions.
+Каждая Unit проходит адаптированный к содержанию цикл:
+
+`Введение → Разбор → Управляемая практика → Самостоятельное/коммуникативное применение → Проверка → Фиксация результата`
+
+Unit считается освоенной не по факту прочтения или выполнения упражнений, а при достаточном подтверждении заявленного результата.
+
+## Правила последовательности
+
+1. Unit внутри раздела проходят строго в каноническом порядке.
+2. Unit нельзя пропускать ради удобства учащегося или AI.
+3. При недостаточном результате Orchestrator организует повторение и повторную проверку.
+4. После последней Unit раздела проводится его CP.
+5. CP нельзя пропускать.
+6. Только успешный CP открывает следующий раздел.
+7. Фактическое состояние обучения не является частью канонической программы.
+
+## Разделение ответственности
+
+GitHub определяет **что и в какой последовательности изучать**. ChatGPT Project организует **фактическое прохождение конкретным учащимся**.
+
+История чатов, ошибки, даты, результаты и индивидуальные планы повторения не входят в каноническую программу.
