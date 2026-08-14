@@ -14,7 +14,7 @@ It does not contain individual learner progress, chat history or actual assessme
 
 Each Unit has a stable identifier such as `1.1`, `8.3` or `18.4`.
 
-The first number identifies the **source lesson of the book**; the second identifies the Unit within that lesson.
+The first number identifies the source lesson of the book; the second identifies the Unit within that lesson.
 
 Each Unit definition must identify:
 
@@ -35,9 +35,10 @@ Each Unit should contain, where applicable:
 4. Learning Sequence
 5. Practice Requirements
 6. Verification Criteria
-7. Typical Difficulties
-8. Transition / prerequisites
-9. Canonical References
+7. Verification Coverage
+8. Typical Difficulties
+9. Transition / prerequisites
+10. Canonical References
 
 The normal learning sequence is:
 
@@ -51,11 +52,21 @@ Unit verification determines whether the learner has demonstrated the result req
 
 It may test recognition, recall, accurate reproduction, transformation, independent production, communicative use or other skills appropriate to the Unit.
 
+The verification definition must identify important components that can be checked by AI and components that require action outside the reliable verification capabilities of the system.
+
+Each required component has a verification mode:
+
+- `AI_VERIFIED` — directly checked by AI with available evidence;
+- `USER_CONFIRMED` — execution is confirmed by the learner because reliable AI verification is unavailable or inappropriate;
+- `NOT_VERIFIED` — required evidence is still missing.
+
+A user confirmation is evidence that the learner reports having performed the required action. It must not be represented as AI verification.
+
 Completion of a Unit does not by itself replace the LCP of its source lesson.
 
 ## 5. Relationship to lesson checkpoint
 
-Every Unit belongs to exactly one source lesson and therefore to exactly one **LCP (Lesson Checkpoint)**.
+Every Unit belongs to exactly one source lesson and therefore to exactly one LCP.
 
 The LCP is conducted after the final Unit of that source lesson and tests integrated use of the important material of the whole lesson.
 
@@ -104,4 +115,5 @@ The canonical definitions remain in GitHub. Actual learner results are handled s
 - Do not move a Unit between source lessons merely for convenience.
 - Do not remove the Unit's relation to its LCP.
 - Do not place learner progress in the canonical Unit file.
+- Do not describe user-confirmed evidence as AI verification.
 - Changes to the canonical route are explicit course changes.
