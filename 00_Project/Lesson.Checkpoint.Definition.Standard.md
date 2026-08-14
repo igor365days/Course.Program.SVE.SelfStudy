@@ -28,36 +28,29 @@ Each LCP has a stable identifier:
 
 Each LCP is linked to exactly one source lesson and to the corresponding range of Unit.
 
-Examples:
-
-- Lesson 1 → Unit 1.1–1.5 → LCP-01
-- Lesson 2 → Unit 2.1–2.4 → LCP-02
-- Lesson 18 → Unit 18.1–18.4 → LCP-18
-
 ## 4. Assessment purpose
 
-The LCP should determine whether the learner can integrate and independently use the important material of the whole lesson.
+The LCP should determine whether the learner can integrate and independently use the important material of the whole lesson. It should not simply repeat the exercises already performed in the Unit.
 
-It should not simply repeat the exercises already performed in the Unit.
+The LCP must cover the important competencies of the lesson using the best available verification method. Where reliable AI verification is impossible, the LCP must contain an explicit user-confirmed task.
 
-Depending on the lesson, an LCP may assess:
+Verification modes are:
 
-- recognition and understanding;
-- recall;
-- accurate use of grammar and vocabulary;
-- transformation or construction;
-- independent production;
-- reading or comprehension;
-- communicative use;
-- combined use of several elements from the lesson.
+- `AI_VERIFIED` — directly checked by AI;
+- `USER_CONFIRMED` — the learner confirms completion of a required action that AI cannot reliably verify;
+- `NOT_VERIFIED` — required evidence is missing.
 
-The exact form depends on the content of the source lesson.
+User confirmation must never be represented as AI verification.
+
+Depending on the lesson, an LCP may assess recognition, recall, accurate use of grammar and vocabulary, transformation or construction, independent production, reading/comprehension, communicative use, pronunciation practice, listening work, or combined use of several elements.
 
 ## 5. Completion rule
 
-Successful completion of an LCP means that the learner has demonstrated the required integrated result for the lesson.
+Successful completion of an LCP means that all mandatory assessment components have sufficient evidence and the integrated lesson result meets the defined success criteria.
 
-If the result is insufficient, the system identifies the relevant deficiencies, organizes targeted remediation and performs an LCP recheck.
+Where a mandatory component requires user confirmation, `USER_CONFIRMED` is sufficient for that component when the task is specifically defined as self-confirmable. It does not claim that AI independently verified the skill.
+
+If the result is insufficient, the system identifies relevant deficiencies, organizes targeted remediation and performs an LCP recheck.
 
 Failure of an LCP does not automatically require repeating the entire lesson.
 
@@ -89,10 +82,11 @@ Each LCP definition should contain, where applicable:
 4. assessment purpose;
 5. required competencies;
 6. assessment tasks;
-7. success criteria;
-8. remediation guidance;
-9. recheck conditions;
-10. canonical references.
+7. verification mode for each required component;
+8. success criteria;
+9. remediation guidance;
+10. recheck conditions;
+11. canonical references.
 
 ## 8. Separation from learner state
 
