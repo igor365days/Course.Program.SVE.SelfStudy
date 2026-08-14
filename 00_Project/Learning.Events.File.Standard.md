@@ -1,49 +1,49 @@
-# Learning Events File Standard
+# Стандарт файла учебных событий
 
-**File:** `04_Progress/Learning.Events.jsonl`  
-**Format:** JSON Lines (JSONL)  
-**Status:** Canonical standard
+**Файл:** `04_Progress/Learning.Events.jsonl`  
+**Формат:** JSON Lines (JSONL)  
+**Статус:** Канонический стандарт
 
-## Purpose
+## Назначение
 
-Defines the append-oriented historical event stream of significant learner progress events.
+Определяет исторический поток значимых событий Progress обучающегося, ориентированный на добавление новых записей.
 
-This file is not a transcript of the Learning Session.
+Этот файл не является стенограммой Learning Session.
 
-## Event record
+## Запись события
 
-Each line contains exactly one JSON object.
+Каждая строка содержит ровно один JSON-объект.
 
-Minimum recommended fields:
+Минимально рекомендуемые поля:
 
 ```json
 {"event_id":"EVT-001","timestamp":"YYYY-MM-DDTHH:MM:SS","type":"UNIT_VERIFIED","section":1,"lesson":1,"unit":"1.1","result":"PASSED","verification":"AI_VERIFIED"}
 ```
 
-## Core fields
+## Основные поля
 
-- `event_id` — unique event identifier;
-- `timestamp` — event time;
-- `type` — canonical event type;
-- `section` — section when applicable;
-- `lesson` — source lesson when applicable;
-- `unit` — Unit when applicable;
-- `assessment` — LCP/CP identifier when applicable;
-- `result` — event result/status when applicable;
-- `verification` — verification source when applicable;
-- `summary` — short human-readable context when needed.
+- `event_id` — уникальный идентификатор события;
+- `timestamp` — время события;
+- `type` — канонический тип события;
+- `section` — раздел, когда применимо;
+- `lesson` — исходный урок, когда применимо;
+- `unit` — Unit, когда применимо;
+- `assessment` — идентификатор LCP/CP, когда применимо;
+- `result` — результат/статус события, когда применимо;
+- `verification` — источник проверки, когда применимо;
+- `summary` — краткий контекст для человека, когда необходим.
 
-## Rules
+## Правила
 
-1. One event per JSONL line.
-2. Events are chronological.
-3. New events are appended; historical events are not silently rewritten.
-4. Events represent significant state-relevant occurrences, not every chat message.
-5. Assessment details belong in Assessment Records; the event may reference the assessment.
-6. Verification values must follow `Assessment.Verification.Policy`.
-7. Event IDs are immutable.
+1. Одна запись события на одну строку JSONL.
+2. События располагаются в хронологическом порядке.
+3. Новые события добавляются; исторические события нельзя молча переписывать.
+4. События отражают значимые изменения состояния, а не каждое сообщение чата.
+5. Подробности оценивания хранятся в Assessment Records; событие может ссылаться на запись оценивания.
+6. Значения проверки должны соответствовать `Assessment.Verification.Policy`.
+7. Идентификаторы событий неизменяемы.
 
-## Event examples
+## Примеры событий
 
 ```json
 {"event_id":"EVT-001","timestamp":"2026-08-20T10:15:00","type":"UNIT_STARTED","unit":"1.1"}
@@ -51,6 +51,6 @@ Minimum recommended fields:
 {"event_id":"EVT-003","timestamp":"2026-08-20T11:10:00","type":"USER_CONFIRMED","assessment":"LCP-01","summary":"Pronunciation task completed"}
 ```
 
-## Reporting
+## Отчётность
 
-The event stream supports historical reconstruction and concise reporting of recent progress without reproducing the conversation transcript.
+Поток событий позволяет восстановить историю и формировать краткий отчёт о последнем Progress без воспроизведения стенограммы разговора.
