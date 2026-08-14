@@ -87,7 +87,3 @@ Historical results belong to Learning Events and Assessment Records.
 ## 8. Implementation independence
 
 This model does not prescribe whether the state is stored in a file, Project Source, external service, database or another implementation. Physical storage is a separate architectural decision.
-
-## TEST-MARKER
-
-ChatGPT Go read-modify-verify test: WRITE_SUCCESS
