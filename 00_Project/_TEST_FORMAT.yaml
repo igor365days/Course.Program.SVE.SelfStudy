@@ -1,0 +1,8 @@
+test:
+  format: yaml
+  status: initial
+  nested:
+    value: 1
+items:
+  - id: A
+    result: PASSED
