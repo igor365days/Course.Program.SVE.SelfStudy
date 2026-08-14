@@ -1,40 +1,40 @@
-# Assessment Record Model
+# Модель Assessment Record
 
-**Document:** Assessment.Record.Model  
-**Status:** Canonical project model  
-**Applies to:** Course.Program.SVE.SelfStudy
+**Документ:** Assessment.Record.Model  
+**Статус:** Каноническая модель проекта  
+**Применяется к:** Course.Program.SVE.SelfStudy
 
-## 1. Purpose
+## 1. Назначение
 
-An Assessment Record represents the actual result of a Unit verification, LCP or CP for one learner.
+Assessment Record представляет фактический результат проверки Unit, LCP или CP для одного обучающегося.
 
-It is part of the learner-state layer and is separate from the canonical definition of the assessment.
+Он относится к слою состояния обучающегося и отделён от канонического определения самого оценивания.
 
-## 2. Assessment identity
+## 2. Идентичность оценивания
 
-Each record identifies:
+Каждая запись определяет:
 
-- Assessment Record ID;
-- control type: `UNIT`, `LCP` or `CP`;
-- target ID;
+- идентификатор Assessment Record;
+- тип контроля: `UNIT`, `LCP` или `CP`;
+- целевой идентификатор;
 - Section ID;
-- source Lesson ID when applicable;
-- Unit ID when applicable;
-- date/time;
-- assessment status;
-- component results;
-- verification source;
-- evidence summary;
-- deficiencies;
-- remediation;
-- recheck information;
-- progression decision.
+- исходный Lesson ID, когда применимо;
+- Unit ID, когда применимо;
+- дату/время;
+- статус оценивания;
+- результаты компонентов;
+- источник проверки;
+- краткое описание доказательств;
+- недостатки;
+- коррекцию;
+- сведения о повторной проверке;
+- решение о продвижении.
 
-## 3. Component result
+## 3. Результат компонента
 
-A control may contain several mandatory components.
+Контроль может содержать несколько обязательных компонентов.
 
-Each component should distinguish at least:
+Каждый компонент должен как минимум различать:
 
 ```text
 Execution status
@@ -42,7 +42,7 @@ Verification source
 Assessment result
 ```
 
-For example:
+Например:
 
 ```text
 Pronunciation
@@ -51,7 +51,7 @@ Verification: USER_CONFIRMED
 Assessment: ACCEPTED
 ```
 
-or:
+или:
 
 ```text
 Grammar
@@ -60,21 +60,21 @@ Verification: AI_VERIFIED
 Assessment: FAILED
 ```
 
-## 4. Verification source
+## 4. Источник проверки
 
-Allowed verification sources are defined by `Assessment.Verification.Policy.md`.
+Допустимые источники проверки определяются `Assessment.Verification.Policy.md`.
 
-At minimum:
+Как минимум:
 
 - `AI_VERIFIED`
 - `USER_CONFIRMED`
 - `NOT_VERIFIED`
 
-A record must not claim AI verification when the result was only confirmed by the learner.
+Запись не должна утверждать наличие AI-проверки, если результат был только подтверждён обучающимся.
 
-## 5. Assessment status
+## 5. Статус оценивания
 
-Recommended control statuses:
+Рекомендуемые статусы:
 
 ```text
 NOT_STARTED
@@ -85,23 +85,23 @@ RECHECK_REQUIRED
 COMPLETED
 ```
 
-`PASSED` describes assessment success. `COMPLETED` describes completion of the control process. They are not interchangeable.
+`PASSED` описывает успешность оценивания. `COMPLETED` описывает завершение процесса контроля. Эти значения не взаимозаменяемы.
 
-## 6. Deficiencies and remediation
+## 6. Недостатки и коррекция
 
-A failed or insufficient assessment should identify relevant deficiencies when possible.
+Неудачное или недостаточное оценивание по возможности должно содержать соответствующие недостатки.
 
-The Orchestrator uses these deficiencies to organize targeted remediation rather than automatically repeating the entire preceding route.
+Orchestrator использует их для организации целевой коррекции, а не для автоматического повторения всего предыдущего маршрута.
 
-## 7. Recheck
+## 7. Повторная проверка
 
-A recheck is a new assessment event/record linked to the previous assessment. Historical results must remain available.
+Повторная проверка является новой записью/событием оценивания, связанным с предыдущим результатом. Исторические результаты должны оставаться доступными.
 
-A recheck does not erase the original failed result.
+Повторная проверка не стирает первоначальный результат `FAILED`.
 
-## 8. Progression decision
+## 8. Решение о продвижении
 
-The record may include the resulting route decision:
+Запись может содержать решение по маршруту:
 
 ```text
 STAY
@@ -112,12 +112,12 @@ OPEN_NEXT_LESSON
 OPEN_NEXT_SECTION
 ```
 
-The decision must comply with the canonical course route and Orchestrator rules.
+Решение должно соответствовать каноническому маршруту курса и правилам Orchestrator.
 
-## 9. Separation from canonical assessment
+## 9. Отделение от канонического оценивания
 
-Canonical Unit/LCP/CP definitions describe what must be assessed.
+Канонические определения Unit/LCP/CP описывают, что должно быть проверено.
 
-Assessment Records describe what actually happened for a learner.
+Assessment Records описывают, что фактически произошло с конкретным обучающимся.
 
-Individual dates, scores, errors and results must never be written into canonical course definitions.
+Индивидуальные даты, оценки, ошибки и результаты никогда не должны записываться в канонические определения курса.
