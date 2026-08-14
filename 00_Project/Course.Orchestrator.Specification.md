@@ -1,7 +1,7 @@
 # Course Orchestrator Specification
 
 **Project:** Course.Program.SVE.SelfStudy  
-**Specification:** v2.0  
+**Specification:** v2.1  
 **Status:** Pre-launch architecture
 
 ## 1. Purpose
@@ -34,7 +34,62 @@ Events     Records     Snapshot
 
 The Orchestrator is a logical role. It is not assumed that ChatGPT Project currently exposes a programmable state-machine API.
 
-## 3. Canonical route
+## 3. Chat role model
+
+Project Instructions apply to all chats in the Project. Therefore the Project uses a common orchestration policy with a role marker in each operational chat.
+
+The internal ChatGPT `chat_id` is not assumed to be available to the model and is not used as the role selector.
+
+Every operational chat should begin with an explicit role marker:
+
+```text
+CHAT ROLE = ORCHESTRATOR
+PROJECT = Course.Program.SVE.SelfStudy
+```
+
+or
+
+```text
+CHAT ROLE = LEARNING
+PROJECT = Course.Program.SVE.SelfStudy
+```
+
+### ORCHESTRATOR role
+
+An ORCHESTRATOR chat is responsible primarily for:
+
+- reading and validating Progress;
+- determining the current route position;
+- determining the next permitted action;
+- coordinating progression and control points;
+- recording/maintaining Progress;
+- producing concise reports;
+- preventing unauthorized route transitions.
+
+It should not reproduce full teaching sessions when a Learning Session is appropriate.
+
+### LEARNING role
+
+A LEARNING chat is responsible primarily for:
+
+- conducting the actual learning work;
+- explaining canonical material;
+- practice and exercises;
+- Unit verification when assigned by the route;
+- carrying out LCP/CP tasks when appropriate;
+- producing the evidence required by the control protocol.
+
+It must respect canonical route and Progress constraints and must not independently skip mandatory stages.
+
+### Shared state
+
+ORCHESTRATOR and LEARNING chats use the same GitHub `04_Progress/` layer as the external persistent state. Chat history is not the permanent course state.
+
+A LEARNING chat may continue work from Progress written by an ORCHESTRATOR chat, and an ORCHESTRATOR chat may determine the route from Progress produced by learning work.
+
+If a role marker is absent or ambiguous, the chat must not invent a role. It should ask for the intended role before performing role-specific orchestration actions.
+
+## 4. Canonical route
 
 The course contains **18 source lessons, 56 Unit, 18 LCP and 5 sections with 5 CP**.
 
@@ -50,7 +105,7 @@ LCP → CP → next section
 
 A Unit belongs to exactly one source lesson and one section. Units inside a lesson are sequential.
 
-## 4. Control hierarchy
+## 5. Control hierarchy
 
 ```text
 UNIT VERIFICATION
@@ -62,7 +117,7 @@ CP — section-level integration
 NEXT SECTION
 ```
 
-## 5. Verification policy
+## 6. Verification policy
 
 Verification rules are defined centrally in `Assessment.Verification.Policy.md`.
 
@@ -78,7 +133,7 @@ The Orchestrator must never represent `USER_CONFIRMED` as AI verification.
 
 When user confirmation is required, the Orchestrator explicitly requests it and records the resulting confirmation.
 
-## 6. Responsibilities
+## 7. Responsibilities
 
 The Orchestrator:
 
@@ -99,7 +154,7 @@ The Orchestrator:
 - produces concise progress reports from structured Progress data;
 - does not rewrite canonical course definitions as part of normal learner progress.
 
-## 7. Source-of-truth hierarchy
+## 8. Source-of-truth hierarchy
 
 The Orchestrator must distinguish three data layers:
 
@@ -116,7 +171,7 @@ The current operational snapshot derived from the above.
 
 `Learning.State.yaml` is not an independent historical source of truth. It may be reconstructed from events and assessment records.
 
-## 8. Progress storage
+## 9. Progress storage
 
 The learner-progress layer is stored in GitHub:
 
@@ -137,11 +192,11 @@ The file structures are defined by:
 
 The Orchestrator must follow those standards rather than inventing alternative structures during execution.
 
-## 9. Session start protocol
+## 10. Session start protocol
 
-At the start of a learning session, the Orchestrator should:
+At the start of a learning session, the active role should:
 
-1. Identify itself as the Course Orchestrator role when appropriate.
+1. Identify the role marker when appropriate.
 2. Read `Learning.State.yaml` if the Progress layer has been initialized.
 3. Read the relevant canonical route and current Unit/Lesson/LCP/CP definitions.
 4. Validate that the stored state is consistent with canonical route rules.
@@ -151,7 +206,7 @@ At the start of a learning session, the Orchestrator should:
 
 The learner should not be required to reconstruct the route manually.
 
-## 10. Unit protocol
+## 11. Unit protocol
 
 ### START_UNIT
 
@@ -182,7 +237,7 @@ A Unit is complete only when all mandatory requirements have acceptable evidence
 
 After completion, determine whether the next route element is another Unit or the LCP for the lesson.
 
-## 11. LCP protocol
+## 12. LCP protocol
 
 An LCP becomes eligible only after all Units belonging to its source lesson satisfy their required completion conditions.
 
@@ -210,7 +265,7 @@ Remediation must target demonstrated gaps. The Orchestrator should map deficienc
 
 A recheck creates a new Assessment Record linked to the previous attempt. The previous result remains in history.
 
-## 12. CP protocol
+## 13. CP protocol
 
 A CP becomes eligible only after all lessons belonging to the section have passed their LCPs.
 
@@ -230,7 +285,7 @@ A CP becomes eligible only after all lessons belonging to the section have passe
 5. If passed, mark the CP completed and open the next section.
 6. If failed, initiate targeted remediation and recheck.
 
-## 13. Event recording protocol
+## 14. Event recording protocol
 
 Record only significant, state-relevant events.
 
@@ -255,7 +310,7 @@ A normal conversation, explanation, question or individual exercise does not aut
 
 Events are append-oriented and historical records must not be silently rewritten.
 
-## 14. Assessment recording protocol
+## 15. Assessment recording protocol
 
 For each LCP or CP attempt, preserve:
 
@@ -273,7 +328,7 @@ For each LCP or CP attempt, preserve:
 
 Assessment details belong in Assessment Records rather than the event stream.
 
-## 15. State update protocol
+## 16. State update protocol
 
 After a significant state transition, the Orchestrator should update `Learning.State.yaml`.
 
@@ -290,7 +345,7 @@ At minimum update state after:
 
 The State update must reflect the latest verified historical data.
 
-## 16. GitHub write protocol
+## 17. GitHub write protocol
 
 When modifying an existing Progress file:
 
@@ -307,7 +362,7 @@ If a write fails because the SHA is stale, re-read the file before retrying. Do 
 
 For new files, confirm that the path does not already exist before creation.
 
-## 17. Atomicity principle
+## 18. Atomicity principle
 
 A significant transition should leave Progress internally coherent.
 
@@ -323,7 +378,7 @@ LEARNING STATE
 
 If an intermediate write fails, the Orchestrator must not claim that the entire transition was successfully persisted. It should verify the repository state before proceeding.
 
-## 18. Route decision protocol
+## 19. Route decision protocol
 
 Before allowing the next action, verify:
 
@@ -355,7 +410,7 @@ OPEN_NEXT_LESSON
 OPEN_NEXT_SECTION
 ```
 
-## 19. Reporting protocol
+## 20. Reporting protocol
 
 Reports are generated on demand from structured Progress data. They are not maintained as permanent duplicated reports.
 
@@ -373,7 +428,7 @@ A section report should additionally summarize its control status and main defic
 
 A detailed report may be requested separately.
 
-## 20. Learning Session architecture
+## 21. Learning Session architecture
 
 A Unit is a learning object, not a required separate chat.
 
@@ -383,7 +438,7 @@ The learner should not be required to create a separate chat for every Unit.
 
 The Orchestrator is the control layer; it does not replace the Learning Session.
 
-## 21. Failure and recovery
+## 22. Failure and recovery
 
 If Progress files are missing, malformed or inconsistent:
 
@@ -394,7 +449,7 @@ If Progress files are missing, malformed or inconsistent:
 5. If reconstruction is ambiguous, stop progression and request the minimum necessary clarification.
 6. Record any confirmed repair as a significant event when appropriate.
 
-## 22. Non-goals
+## 23. Non-goals
 
 The Orchestrator must not:
 
@@ -406,7 +461,7 @@ The Orchestrator must not:
 - claim a transition is persisted without verifying the corresponding GitHub write;
 - create verbose permanent reports when a compact structured record is sufficient.
 
-## 23. Design principles
+## 24. Design principles
 
 1. Canonical course and learner state are different things.
 2. Unit, LCP and CP are different control levels.
@@ -422,3 +477,5 @@ The Orchestrator must not:
 12. GitHub is the external persistence layer for learner Progress.
 13. The learner should not manually reconstruct the route.
 14. The logical protocol must remain compatible with a future software Orchestrator.
+15. Chat role is declared explicitly rather than inferred from an unavailable internal chat identifier.
+16. Project-wide instructions define shared rules; the chat role selects the appropriate operational behavior.
