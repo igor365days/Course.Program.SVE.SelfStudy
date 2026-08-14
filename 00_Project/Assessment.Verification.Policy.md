@@ -1,48 +1,48 @@
-# Assessment Verification Policy
+# Политика проверки оценивания
 
-**Document:** Assessment.Verification.Policy  
-**Status:** Canonical project policy  
-**Applies to:** Course.Program.SVE.SelfStudy
+**Документ:** Assessment.Verification.Policy  
+**Статус:** Каноническая политика проекта  
+**Применяется к:** Course.Program.SVE.SelfStudy
 
-## 1. Purpose
+## 1. Назначение
 
-This document defines how different types of control tasks are verified. It is a canonical policy of the course and is independent of any individual learner's results.
+Этот документ определяет, как проверяются различные типы контрольных заданий. Это каноническая политика курса, независимая от результатов конкретного обучающегося.
 
-The policy prevents the course from assuming that AI can reliably verify every aspect of language learning.
+Политика не позволяет предполагать, что AI способен надёжно проверить каждый аспект изучения языка.
 
-## 2. Verification methods
+## 2. Способы проверки
 
 ### AI_VERIFIED
 
-The result can be directly assessed by AI with sufficient reliability for the defined task.
+Результат может быть непосредственно оценён AI с достаточной для данного задания надёжностью.
 
-Typical examples:
-- grammar exercises;
-- vocabulary recall and use;
-- reading comprehension;
-- written production;
-- controlled transformations;
-- text-based communicative tasks.
+Типичные примеры:
+- грамматические упражнения;
+- воспроизведение и использование лексики;
+- понимание прочитанного;
+- письменная продукция;
+- контролируемые преобразования;
+- текстовые коммуникативные задания.
 
 ### USER_CONFIRMED
 
-The task requires an action or evidence that AI cannot reliably observe or assess in the available environment. The learner confirms that the required action was completed.
+Задание требует действия или доказательства, которое AI не может надёжно наблюдать или оценивать в доступной среде. Обучающийся подтверждает, что требуемое действие выполнено.
 
-Typical examples:
-- pronunciation practice when reliable pronunciation assessment is unavailable;
-- practice performed outside ChatGPT;
-- use of external audio or other external material where completion cannot be independently verified;
-- physical or offline learning activities.
+Типичные примеры:
+- практика произношения, когда надёжная оценка произношения недоступна;
+- практика, выполненная вне ChatGPT;
+- использование внешнего аудио или другого внешнего материала, выполнение которого нельзя независимо проверить;
+- физические или офлайн-задания.
 
-USER_CONFIRMED means **the learner confirms execution of the required action**. It does not by itself claim that AI has verified mastery.
+USER_CONFIRMED означает **подтверждение обучающимся выполнения требуемого действия**. Это само по себе не означает, что AI проверил уровень освоения.
 
 ### COMBINED
 
-The control contains components requiring different verification methods. Each component must be verified according to its own applicable method.
+Контроль содержит компоненты, для которых требуются разные способы проверки. Каждый компонент должен проверяться своим применимым способом.
 
-## 3. Control-type policy
+## 3. Политика по типам контроля
 
-| Control type | Default verification |
+| Тип контроля | Проверка по умолчанию |
 |---|---|
 | Grammar | AI_VERIFIED |
 | Vocabulary | AI_VERIFIED |
@@ -55,15 +55,15 @@ The control contains components requiring different verification methods. Each c
 | External practical task | USER_CONFIRMED |
 | Offline task | USER_CONFIRMED |
 
-These are default policies, not guarantees. The actual assessment design must respect the capabilities available at the time of course execution.
+Это политики по умолчанию, а не гарантии. Фактическая конструкция оценивания должна учитывать возможности, доступные во время проведения курса.
 
-## 4. Control-point composition
+## 4. Состав контрольной точки
 
-A Unit verification, LCP or CP may contain multiple control components.
+Проверка Unit, LCP или CP может содержать несколько компонентов контроля.
 
-The verification policy applies to the **type of component**, not to the name of the control point itself.
+Политика проверки применяется к **типу компонента**, а не к названию самой контрольной точки.
 
-Example:
+Пример:
 
 ```text
 LCP-01
@@ -74,21 +74,21 @@ LCP-01
 └── Pronunciation .. USER_CONFIRMED
 ```
 
-The canonical definition of the control point does not need to repeat the general verification policy for each component.
+Каноническому определению контрольной точки не нужно повторять общую политику проверки для каждого компонента.
 
-## 5. Completion rule
+## 5. Правило завершения
 
-Every mandatory control component must have an acceptable verification result.
+Каждый обязательный компонент контроля должен иметь приемлемый результат проверки.
 
-`NOT_VERIFIED` means that the required evidence or confirmation is still missing.
+`NOT_VERIFIED` означает, что требуемые доказательства или подтверждение ещё отсутствуют.
 
-A control point must not be considered fully completed while a mandatory component remains `NOT_VERIFIED`.
+Контрольная точка не должна считаться полностью завершённой, пока обязательный компонент имеет состояние `NOT_VERIFIED`.
 
-A control point may be completed with a mixture of `AI_VERIFIED` and `USER_CONFIRMED` components when that composition is permitted by this policy and by the control's requirements.
+Контрольная точка может быть завершена с сочетанием компонентов `AI_VERIFIED` и `USER_CONFIRMED`, если такое сочетание разрешено этой политикой и требованиями самой контрольной точки.
 
-## 6. Evidence distinction
+## 6. Различие источника доказательства
 
-The system must distinguish:
+Система должна различать:
 
 ```text
 AI_VERIFIED
@@ -96,11 +96,11 @@ USER_CONFIRMED
 NOT_VERIFIED
 ```
 
-These states describe the **source of confirmation**, not necessarily the quality score of the learner's performance.
+Эти состояния описывают **источник подтверждения**, а не обязательно качество выполнения обучающимся.
 
-Assessment result and verification source are separate concepts.
+Результат оценивания и источник проверки — разные понятия.
 
-For example:
+Например:
 
 ```text
 Task execution: COMPLETED
@@ -108,7 +108,7 @@ Verification source: USER_CONFIRMED
 Assessment result: ACCEPTED
 ```
 
-or:
+или:
 
 ```text
 Task execution: COMPLETED
@@ -116,8 +116,8 @@ Verification source: AI_VERIFIED
 Assessment result: FAILED
 ```
 
-## 7. Future capability changes
+## 7. Изменения возможностей в будущем
 
-If available AI capabilities change, the central policy may be updated without rewriting every Unit or checkpoint definition.
+Если доступные возможности AI изменятся, центральная политика может быть обновлена без переписывания каждого Unit или определения контрольной точки.
 
-Such a change must not silently alter historical learner records. Historical records retain the verification method that was actually used.
+Такое изменение не должно молча изменять исторические записи обучающегося. Исторические записи сохраняют реально использованный способ проверки.
