@@ -1,36 +1,36 @@
-# Learning State Model
+# Модель Learning State
 
-**Document:** Learning.State.Model  
-**Status:** Canonical project model  
-**Applies to:** Course.Program.SVE.SelfStudy
+**Документ:** Learning.State.Model  
+**Статус:** Каноническая модель проекта  
+**Применяется к:** Course.Program.SVE.SelfStudy
 
-## 1. Purpose
+## 1. Назначение
 
-Learning State is the compact representation of the learner's current position and currently relevant conditions in the canonical route.
+Learning State — компактное представление текущей позиции обучающегося и актуальных условий на каноническом маршруте.
 
-It is not a transcript and not the historical event log.
+Это не стенограмма и не исторический журнал событий.
 
-## 2. State contents
+## 2. Содержание состояния
 
-The current state should identify, where applicable:
+Текущее состояние по возможности должно определять:
 
-- current Section;
-- current source Lesson;
-- current Unit;
-- current control point;
-- completed Units relevant to the current route;
-- completed LCPs;
-- completed CPs;
-- open remediation;
-- unresolved deficiencies;
-- next permitted action;
-- blocking conditions.
+- текущий Section;
+- текущий исходный Lesson;
+- текущий Unit;
+- текущую контрольную точку;
+- завершённые Unit, относящиеся к текущему маршруту;
+- завершённые LCP;
+- завершённые CP;
+- открытую коррекцию;
+- нерешённые недостатки;
+- следующее разрешённое действие;
+- блокирующие условия.
 
-## 3. State principle
+## 3. Принцип состояния
 
-The state is derived from canonical route rules and recorded learning events/assessment records. It must not contradict historical records.
+Состояние выводится из канонических правил маршрута и записанных Learning Events/Assessment Records. Оно не должно противоречить историческим данным.
 
-Conceptually:
+Концептуально:
 
 ```text
 Learning Events + Assessment Records
@@ -40,19 +40,19 @@ Learning Events + Assessment Records
        Current State
 ```
 
-## 4. Route position
+## 4. Позиция на маршруте
 
-The state must always identify the learner's position in the hierarchy:
+Состояние всегда должно определять позицию обучающегося в иерархии:
 
 ```text
 Section → Source Lesson → Unit / LCP / CP
 ```
 
-Only the canonical route determines which next element is eligible.
+Только канонический маршрут определяет, какой следующий элемент доступен.
 
-## 5. Control status
+## 5. Статус контроля
 
-The state must distinguish at least:
+Состояние должно различать как минимум:
 
 ```text
 NOT_STARTED
@@ -64,11 +64,11 @@ COMPLETED
 BLOCKED
 ```
 
-The exact state machine is governed by the Orchestrator specification.
+Точная модель состояний определяется спецификацией Orchestrator.
 
-## 6. Verification provenance
+## 6. Источник проверки
 
-Where a current control result depends on verification, the state may reference the verification source:
+Если текущий результат контроля зависит от проверки, состояние может ссылаться на источник:
 
 ```text
 AI_VERIFIED
@@ -76,14 +76,14 @@ USER_CONFIRMED
 NOT_VERIFIED
 ```
 
-This preserves the distinction between actual AI assessment and learner confirmation.
+Это сохраняет различие между фактической AI-проверкой и подтверждением обучающегося.
 
-## 7. No historical compression that loses meaning
+## 7. Нельзя терять смысл истории при сжатии
 
-A compact current state may summarize history, but it must not destroy information required to understand why the learner reached the current state.
+Компактное текущее состояние может суммировать историю, но не должно уничтожать информацию, необходимую для понимания причины текущего состояния.
 
-Historical results belong to Learning Events and Assessment Records.
+Исторические результаты относятся к Learning Events и Assessment Records.
 
-## 8. Implementation independence
+## 8. Независимость от реализации
 
-This model does not prescribe whether the state is stored in a file, Project Source, external service, database or another implementation. Physical storage is a separate architectural decision.
+Эта модель не предписывает, хранится ли состояние в файле, Project Source, внешнем сервисе, базе данных или другом механизме. Физическое хранение является отдельным архитектурным решением.
