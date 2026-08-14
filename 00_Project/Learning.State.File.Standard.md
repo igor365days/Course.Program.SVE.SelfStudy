@@ -1,16 +1,16 @@
-# Learning State File Standard
+# Стандарт файла состояния обучения
 
-**File:** `04_Progress/Learning.State.yaml`  
-**Format:** YAML  
-**Status:** Canonical standard
+**Файл:** `04_Progress/Learning.State.yaml`  
+**Формат:** YAML  
+**Статус:** Канонический стандарт
 
-## Purpose
+## Назначение
 
-Defines the structure of the compact current state of one learner's course progress.
+Определяет структуру компактного текущего состояния Progress одного обучающегося.
 
-The file is an operational snapshot, not the historical source of truth.
+Файл является оперативным снимком, а не историческим источником истины.
 
-## Canonical structure
+## Каноническая структура
 
 ```yaml
 course: Course.Program.SVE.SelfStudy
@@ -49,17 +49,17 @@ next_action: START_UNIT
 blocking_conditions: []
 ```
 
-## Rules
+## Правила
 
-1. Only the current state is stored here; chat transcripts are excluded.
-2. Counters must be consistent with canonical course totals.
-3. `current` identifies the learner's current route position.
-4. `next_action` must comply with the canonical route and Orchestrator rules.
-5. A mandatory unresolved control cannot be omitted from `blocking_conditions`.
-6. Verification provenance may be included where relevant: `AI_VERIFIED`, `USER_CONFIRMED`, `NOT_VERIFIED`.
-7. State may be regenerated from historical events and assessment records.
-8. Learner-specific data must never be written into canonical course files.
+1. Здесь хранится только текущее состояние; стенограммы чатов исключаются.
+2. Счётчики должны соответствовать каноническим итоговым значениям курса.
+3. `current` определяет текущую позицию обучающегося на маршруте.
+4. `next_action` должен соответствовать каноническому маршруту и правилам Orchestrator.
+5. Обязательный нерешённый контроль нельзя исключать из `blocking_conditions`.
+6. Источник проверки при необходимости может быть указан значением `AI_VERIFIED`, `USER_CONFIRMED`, `NOT_VERIFIED`.
+7. Состояние может быть восстановлено из исторических событий и записей оценивания.
+8. Данные конкретного обучающегося никогда не должны записываться в канонические файлы курса.
 
-## Reporting
+## Отчётность
 
-The structure must support concise reports covering current position, overall progress, latest completed control and next action.
+Структура должна поддерживать краткие отчёты о текущей позиции, общем Progress, последнем завершённом контроле и следующем действии.
