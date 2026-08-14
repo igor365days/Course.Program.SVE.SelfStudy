@@ -1,60 +1,46 @@
 # Course Orchestrator Specification
 
 **Project:** Course.Program.SVE.SelfStudy  
-**Specification:** v1.0  
+**Specification:** v1.1  
 **Status:** Pre-launch architecture
 
 ## 1. Purpose
 
-Course Orchestrator is the logical control layer of the learning system.
+Course Orchestrator is the logical control layer of the learning system. It organizes the learner's route through the canonical course, validates transitions, controls Unit and Checkpoint progression, and maintains an accurate representation of actual learning state.
 
-Its purpose is to organize the learner's route through the canonical course, validate transitions between learning states, coordinate Unit and Checkpoint sessions, and maintain an accurate representation of the learner's actual progress.
+The objective is maximum sustainable learning result, not maximum speed of completion.
 
-The Orchestrator does not replace the canonical course, does not teach the entire course itself, and does not treat a user's statement that a Unit is "finished" as sufficient evidence of mastery.
+## 2. Canonical Route
 
-The primary objective is **maximum sustainable learning result**, not maximum speed of course completion.
+The canonical course contains 18 source lessons, 56 Unit and 5 sections. Each Unit belongs to exactly one section. Unit inside a section are sequential. Each section ends with exactly one Checkpoint.
 
-## 2. System Boundary
+```text
+SECTION 1 → Unit → ... → Unit → CP-1
+SECTION 2 → Unit → ... → Unit → CP-2
+SECTION 3 → Unit → ... → Unit → CP-3
+SECTION 4 → Unit → ... → Unit → CP-4
+SECTION 5 → Unit → ... → Unit → CP-5
+```
 
-The system has four principal layers:
+A passed CP is the transition gate to the next section. Failed or insufficient CP results require remediation and recheck before transition.
+
+## 3. System Layers
 
 ```text
 GitHub — Canonical Course
         ↓
 Course Orchestrator
         ↓
-Learning Sessions / Checkpoints
+Learning Session / Checkpoint Session
         ↓
-Learning Progress + Evidence
+Learning State + Evidence
 ```
 
-### 2.1 Canonical Course
+GitHub defines what and in what order to learn. The Project organizes the practical learning process for one learner.
 
-GitHub defines what must be learned, in what order, and what each Unit and Checkpoint is expected to accomplish.
+## 4. Core Principle
 
-The Orchestrator must not silently modify this layer.
-
-### 2.2 Orchestrator
-
-The Orchestrator determines what action is currently permitted or required based on the canonical route, learner state, prerequisites, evidence and verification results.
-
-### 2.3 Learning Session
-
-A Unit chat conducts the actual learning activity: explanation, practice, tasks and verification appropriate to the Unit.
-
-A Checkpoint chat conducts an integrated assessment of the required accumulated material.
-
-### 2.4 Learning Progress
-
-Progress represents the actual state of this learner's course participation. It is not a copy of the canonical course.
-
-## 3. Core Principle
-
-Separate **reasoning** from **state transition**.
-
-The LLM may analyze the learner's work and propose an action. The Orchestrator validates whether that action is allowed by the course state and rules before treating it as a state transition.
-
-Conceptually:
+Separate LLM reasoning from state transition.
 
 ```text
 LLM analysis
@@ -63,125 +49,71 @@ proposed action
     ↓
 Policy / State validation
     ↓
-Course Orchestrator
+Orchestrator
     ↓
 state transition
-    ↓
-updated Progress
 ```
 
 A proposed action is not automatically a valid transition.
 
-## 4. Responsibilities
+## 5. Responsibilities
 
-The Orchestrator is responsible for:
+The Orchestrator:
 
-- identifying the current route position;
-- identifying the current Unit or Checkpoint;
-- validating prerequisites;
-- determining the next eligible action;
-- coordinating Unit sessions;
-- receiving and evaluating completion evidence;
-- deciding whether review/remediation is required;
-- controlling transitions to the next Unit;
-- initiating Checkpoints at the canonical route position;
-- recording relevant evidence and progress state;
-- preventing invalid or premature completion states;
-- providing the learner with the next concrete action.
+- identifies the current section and route element;
+- identifies the current Unit or CP;
+- validates prerequisites and route order;
+- determines the next eligible action;
+- coordinates the Learning Session;
+- receives and evaluates evidence;
+- organizes review/remediation;
+- controls Unit completion;
+- starts the section CP after the final Unit;
+- blocks the next section until CP requirements are satisfied;
+- records or requests recording of relevant learning state;
+- gives the learner one clear next action.
 
-The Orchestrator is not responsible for:
+It does not rewrite the canonical course, teach the whole course itself, or declare mastery solely from a learner claim.
 
-- rewriting the canonical course without authorization;
-- replacing the Unit's teaching process;
-- storing the entire history of a chat in Progress;
-- declaring mastery solely from the learner's assertion;
-- optimizing the course structure merely for ChatGPT convenience.
+## 6. Learning Session Architecture
 
-## 5. Core Actions
+A Unit is a **learning object**, not a required separate chat.
 
-The logical action vocabulary is:
+The default Project implementation uses a continuous Learning Session chat for sequential Unit work. A new Learning Session may be started only when the current chat becomes too large, loses useful context, or another operational reason makes rotation appropriate.
 
-### Navigation
+The learner should not be required to create a new chat for every Unit.
 
-- `GET_CURRENT_STATE`
-- `GET_CURRENT_UNIT`
-- `GET_NEXT_ROUTE_ELEMENT`
+A Checkpoint may use the same Learning Session or a separate Checkpoint Session when that is operationally preferable. This does not change the canonical route.
 
-### Learning
-
-- `START_UNIT`
-- `CONTINUE_UNIT`
-- `REVIEW_UNIT`
-- `RETRY_UNIT`
-
-### Verification
-
-- `VERIFY_UNIT`
-- `COMPLETE_UNIT`
-
-### Checkpoints
-
-- `START_CHECKPOINT`
-- `COMPLETE_CHECKPOINT`
-- `REMEDIATION`
-- `RECHECK`
-
-### Progress and Evidence
-
-- `READ_PROGRESS`
-- `RECORD_EVIDENCE`
-- `UPDATE_PROGRESS`
-
-These actions are a logical protocol. They do not imply that ChatGPT Project currently exposes a programmable API for executing them.
-
-## 6. Learning State Machine
-
-### 6.1 Unit states
+## 7. Unit States
 
 ```text
 NOT_STARTED
     ↓
 IN_PROGRESS
-    ├── REVIEW_REQUIRED ──→ IN_PROGRESS
-    │
-    └── verification passed → COMPLETED
-                                  ↓
-                              NEXT UNIT
+    ├── REVIEW_REQUIRED → IN_PROGRESS
+    └── VERIFIED → COMPLETED
 ```
 
-A Unit may only become `COMPLETED` when the required learning and verification criteria are satisfied.
+A Unit becomes `COMPLETED` only when its canonical verification criteria are satisfied.
 
-### 6.2 Checkpoint states
+## 8. Checkpoint States
 
 ```text
 NOT_STARTED
     ↓
 IN_PROGRESS
     ├── FAILED → REMEDIATION → RECHECK
-    │
-    └── PASSED → COMPLETED
+    └── PASSED → COMPLETED → NEXT SECTION
 ```
 
-## 7. Preconditions for Unit Completion
+## 9. Unit Completion Evidence
 
-Before `COMPLETE_UNIT`, the system should establish, as applicable to the Unit:
-
-- required content was covered;
-- required practice was performed;
-- verification was conducted;
-- the learner demonstrated the required level of independent performance;
-- no critical unresolved deficiency prevents progression.
-
-The exact criteria come from the canonical Unit definition.
-
-## 8. Evidence Model
-
-Completion must be based on evidence rather than a binary claim.
-
-A logical Unit result should contain at least:
+A logical result should contain, as applicable:
 
 ```text
 unit_id
+section_id
 status
 understanding
 controlled_practice
@@ -192,110 +124,108 @@ review_required
 recommended_next_action
 ```
 
-Not every field needs to be displayed to the learner, and the exact evidence requirements depend on the Unit.
+The exact evidence requirements come from the Unit definition.
 
-## 9. Policy Layer
+## 10. Checkpoint Evidence
 
-Before a state transition, the following questions should be checked:
+A CP result should contain:
 
-1. Is this the current canonical route element?
+```text
+checkpoint_id
+section_id
+covered_route_range
+status
+knowledge_result
+skill_result
+critical_gaps
+remediation_required
+next_section_eligible
+```
+
+## 11. Policy Checks
+
+Before a transition, verify:
+
+1. Is the requested element the current canonical route element?
 2. Are prerequisites satisfied?
 3. Are mandatory learning stages complete?
 4. Is sufficient evidence available?
-5. Has the required verification passed?
-6. Are there critical unresolved errors?
-7. Is the proposed transition consistent with the canonical route?
-
-If a condition fails, the Orchestrator should reject or defer the transition and produce a corrective action.
+5. Has required verification passed?
+6. Are critical unresolved deficiencies absent?
+7. If this is a CP, has the whole section route been completed?
+8. Is the next section locked or unlocked according to the CP result?
 
 Example:
 
 ```text
-PROPOSED: COMPLETE_UNIT(1.1)
+PROPOSED: OPEN SECTION 2
 
 POLICY CHECK:
-✓ current unit
-✓ required practice
-✓ verification performed
-✗ independent performance insufficient
+✓ Section 1 Unit completed
+✓ CP-1 completed
+✓ CP-1 passed
 
-RESULT: DENY
-NEXT ACTION: REVIEW_UNIT(1.1)
+RESULT: ALLOW
 ```
 
-## 10. Unit Chat Protocol
+## 12. Logical Actions
 
-A Unit chat is a learning session, not the course controller.
+### Navigation
+- `GET_CURRENT_STATE`
+- `GET_CURRENT_SECTION`
+- `GET_CURRENT_ROUTE_ELEMENT`
+- `GET_NEXT_ROUTE_ELEMENT`
 
-At start it receives or determines:
+### Learning
+- `START_UNIT`
+- `CONTINUE_UNIT`
+- `REVIEW_UNIT`
+- `RETRY_UNIT`
 
-- Unit ID;
-- canonical Unit definition;
-- relevant prerequisites;
-- current learner state;
-- current learning objective.
+### Verification
+- `VERIFY_UNIT`
+- `COMPLETE_UNIT`
 
-During the session it produces learning activity and evidence.
+### Checkpoints
+- `START_CHECKPOINT`
+- `COMPLETE_CHECKPOINT`
+- `REMEDIATION`
+- `RECHECK`
+- `OPEN_NEXT_SECTION`
 
-At the end it produces a structured result for the Orchestrator, for example:
+### State and Evidence
+- `READ_PROGRESS`
+- `RECORD_EVIDENCE`
+- `UPDATE_PROGRESS`
 
-```text
-UNIT RESULT
-unit: 1.1
-learning_completed: true
-verification: passed
-independent_performance: sufficient
-errors: []
-review_required: false
-recommended_next: 1.2
-```
+These are logical protocol actions, not claims that ChatGPT Project currently exposes a programmable state-machine API.
 
-The recommended next Unit is advisory. The Orchestrator validates the actual transition.
+## 13. Progress Model
 
-## 11. Orchestrator → Learner Protocol
+Progress is the compact current state of the learner, not a copy of the course and not a transcript of conversations.
 
-The Orchestrator should normally give the learner one clear next action.
+At minimum it must allow the Orchestrator to determine:
 
-Examples:
-
-- start the current Unit;
-- continue the current Unit;
-- perform a specific remediation task;
-- create/open the next Unit chat;
-- begin a Checkpoint;
-- repeat a required verification.
-
-The learner should not have to reconstruct the course route manually.
-
-## 12. Progress Model
-
-Progress should contain current state, not full conversation history.
-
-At minimum it should be possible to determine:
-
+- current section;
 - current route element;
-- status of completed Unit and Checkpoints;
+- Unit/CP statuses;
 - unresolved remediation;
-- important persistent errors;
-- review requirements;
+- persistent important errors;
 - latest verified evidence;
-- next eligible action.
+- next eligible action;
+- section/CP transition status.
 
-The Progress model must remain aligned with the canonical route but must never become a second copy of canonical Unit definitions.
+## 14. Project Implementation
 
-## 13. ChatGPT Project Implementation
+The initial implementation uses Project Instructions, a dedicated Orchestrator chat, a compact Progress representation and canonical GitHub materials.
 
-In the initial implementation, Course Orchestrator is a **logical role implemented with ChatGPT Project instructions, a dedicated Orchestrator working chat, structured Progress and canonical GitHub materials**.
+Project Sources can preserve useful snapshots, but ordinary Project chats cannot be assumed to edit an existing Source or automatically create a new Source. Therefore Sources are not treated as the transactional state store.
 
-The current ChatGPT Project does not need to be assumed to have a programmable state machine, automatic cross-chat write access, or automatic chat creation.
+The learner should perform as little interface administration as possible. In particular, creating a separate chat for every Unit is not a requirement.
 
-Therefore the protocol must work even when a learner performs a small explicit interface action, such as creating the next Unit chat.
+## 15. Future Software Implementation
 
-The learner-facing experience should nevertheless make such actions minimal and unambiguous.
-
-## 14. Future Software Implementation
-
-The architecture must remain compatible with a future programmatic implementation:
+The logical protocol remains compatible with a real software implementation:
 
 ```text
 LLM
@@ -306,26 +236,24 @@ Policy Layer
  ↓
 Course Orchestrator
  ↓
-Course State / Progress Store
+State Store
  ↓
-Learning Session / external tools
+Learning Session / tools
  ↓
 Evidence
  ↓
 Orchestrator
 ```
 
-The logical actions, states, evidence model and policies should therefore be designed independently of the current ChatGPT UI.
-
-## 15. Design Principles
+## 16. Design Principles
 
 1. Canonical course and learner state are different things.
-2. Learning sessions and orchestration are different roles.
-3. LLM reasoning and state transition are different responsibilities.
-4. Completion requires evidence.
-5. The Orchestrator validates transitions.
-6. The learner should not have to manage the learning route manually.
-7. Adapt the learning process without silently changing the canonical course.
-8. Prefer learning quality and sustainability over speed.
-9. Keep Progress compact and operational.
-10. Design the logical protocol so that it can later become a real software orchestrator.
+2. Sections are route-control units; CP is the section transition gate.
+3. Unit and chat are different concepts.
+4. One Learning Session may contain many sequential Unit.
+5. LLM reasoning and state transition are different responsibilities.
+6. Completion requires evidence.
+7. CP completion controls section transition.
+8. The learner should not manually manage the learning route.
+9. Progress remains compact and operational.
+10. The architecture must remain transferable to a future software Orchestrator.
