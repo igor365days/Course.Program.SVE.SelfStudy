@@ -1,14 +1,14 @@
-# Assessment Record File Standard
+# Стандарт файла записи оценивания
 
-**Files:** `04_Progress/Assessments/LCP-XX.yaml`, `04_Progress/Assessments/CP-XX.yaml`  
-**Format:** YAML  
-**Status:** Canonical standard
+**Файлы:** `04_Progress/Assessments/LCP-XX.yaml`, `04_Progress/Assessments/CP-XX.yaml`  
+**Формат:** YAML  
+**Статус:** Канонический стандарт
 
-## Purpose
+## Назначение
 
-Defines the compact learner-specific record of an actual LCP or CP assessment.
+Определяет компактную запись конкретного результата оценивания LCP или CP для обучающегося.
 
-## Canonical structure
+## Каноническая структура
 
 ```yaml
 assessment_id: LCP-01
@@ -44,21 +44,21 @@ recheck:
 decision: OPEN_NEXT_LESSON
 ```
 
-## Rules
+## Правила
 
-1. One current assessment record corresponds to one control-point attempt.
-2. A recheck creates a new record linked to the previous assessment; it does not erase the previous result.
-3. `execution`, `verification` and `result` are separate concepts.
-4. `USER_CONFIRMED` must never be represented as AI verification.
-5. Every mandatory component must have acceptable evidence before the control is considered complete.
-6. `NOT_VERIFIED` on a mandatory component blocks completion.
-7. Deficiencies should be concise and actionable.
-8. Records contain results, not full transcripts of the assessment session.
-9. The record must remain compatible with the canonical verification policy and Orchestrator rules.
+1. Одна текущая Assessment Record соответствует одной попытке прохождения контрольной точки.
+2. Повторная проверка создаёт новую запись, связанную с предыдущим оцениванием; предыдущий результат не стирается.
+3. `execution`, `verification` и `result` являются отдельными понятиями.
+4. `USER_CONFIRMED` никогда нельзя представлять как AI-проверку.
+5. Каждый обязательный компонент должен иметь приемлемые доказательства до признания контроля завершённым.
+6. `NOT_VERIFIED` для обязательного компонента блокирует завершение.
+7. Недостатки должны быть краткими и пригодными для практического действия.
+8. Записи содержат результаты, а не полные стенограммы сессии оценивания.
+9. Запись должна оставаться совместимой с канонической политикой проверки и правилами Orchestrator.
 
-## Assessment status
+## Статусы оценивания
 
-Recommended values:
+Рекомендуемые значения:
 
 ```text
 NOT_STARTED
@@ -69,8 +69,8 @@ RECHECK_REQUIRED
 COMPLETED
 ```
 
-`PASSED` describes assessment success. `COMPLETED` describes completion of the control process.
+`PASSED` описывает успешность оценивания. `COMPLETED` описывает завершение процесса контроля.
 
-## Reporting
+## Отчётность
 
-The record must support concise reporting of result, verification source, main strengths/deficiencies, remediation and progression decision.
+Запись должна поддерживать краткий отчёт о результате, источнике проверки, основных сильных сторонах/недостатках, коррекции и решении о продвижении.
