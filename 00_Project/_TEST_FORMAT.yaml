@@ -1,8 +1,10 @@
 test:
   format: yaml
-  status: initial
+  status: updated
   nested:
-    value: 1
+    value: 2
 items:
   - id: A
     result: PASSED
+  - id: B
+    result: USER_CONFIRMED
