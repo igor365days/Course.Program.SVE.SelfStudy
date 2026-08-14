@@ -1,7 +1,7 @@
 # Course Orchestrator Specification
 
 **Project:** Course.Program.SVE.SelfStudy  
-**Specification:** v1.2  
+**Specification:** v1.3  
 **Status:** Pre-launch architecture
 
 ## 1. Purpose
@@ -38,19 +38,25 @@ CP — section-level integration
 NEXT SECTION
 ```
 
-### Unit verification
+## 4. Verification evidence
 
-Controls the result of one Unit.
+The Orchestrator must distinguish the source of evidence rather than treating all completion claims as equivalent.
 
-### LCP
+Allowed evidence modes:
 
-Controls integrated and independent use of the important material of one complete source lesson. It is mandatory after the final Unit of that lesson.
+- `AI_VERIFIED` — AI directly evaluated the available evidence;
+- `USER_CONFIRMED` — the learner confirms completion of a specifically defined action that AI cannot reliably verify;
+- `NOT_VERIFIED` — required evidence is absent.
 
-### CP
+Examples of potentially user-confirmed components include pronunciation practice performed by the learner, work with external audio, or an assignment completed outside the Project.
 
-Controls integrated learning of the complete section. It is mandatory after the final lesson LCP of that section and is the transition gate to the next section.
+`USER_CONFIRMED` is a valid control input where the canonical task explicitly permits it, but it must never be represented as AI verification.
 
-## 4. Responsibilities
+A control point cannot be completed while a mandatory component remains `NOT_VERIFIED`.
+
+The Orchestrator should clearly tell the learner when a user confirmation is required and request the confirmation as an explicit action rather than silently assuming completion.
+
+## 5. Responsibilities
 
 The Orchestrator:
 
@@ -61,19 +67,20 @@ The Orchestrator:
 - validates Unit completion;
 - starts LCP after the final Unit of a source lesson;
 - evaluates LCP results and organizes targeted remediation/recheck;
+- requests user confirmation for control components that cannot be reliably verified by AI;
 - starts CP after the final LCP of a section;
 - blocks the next section until CP requirements are satisfied;
 - determines the next concrete learner action.
 
-It does not rewrite the canonical course or declare mastery solely from a learner claim.
+It does not rewrite the canonical course or falsely represent user confirmation as AI verification.
 
-## 5. Remediation principle
+## 6. Remediation principle
 
 Failure at LCP or CP does not automatically mean repeating the whole preceding route.
 
 The Orchestrator should identify the demonstrated gaps, map them to relevant Unit or lesson material, organize targeted remediation and then conduct a recheck.
 
-## 6. Learning Session architecture
+## 7. Learning Session architecture
 
 A Unit is a learning object, not a required separate chat.
 
@@ -81,7 +88,7 @@ The default Project implementation uses a continuous Learning Session for sequen
 
 The learner should not be required to create a separate chat for every Unit.
 
-## 7. States
+## 8. States
 
 ### Unit
 
@@ -104,17 +111,17 @@ NOT_STARTED → IN_PROGRESS → PASSED → COMPLETED → NEXT SECTION
                          ↘ FAILED → REMEDIATION → RECHECK
 ```
 
-## 8. Evidence
+## 9. Evidence requirements
 
-Unit evidence may include understanding, controlled practice, independent performance, verification and errors.
+Unit evidence may include understanding, controlled practice, independent performance, verification and errors, with a verification mode for each mandatory component.
 
-LCP evidence should establish integrated use of the lesson material, independent performance and critical gaps.
+LCP evidence should establish integrated use of the lesson material, independent performance and critical gaps, with explicit verification modes for all mandatory components.
 
-CP evidence should establish integrated use of the section material, critical gaps, remediation requirements and eligibility for the next section.
+CP evidence should establish integrated use of the section material, critical gaps, remediation requirements and eligibility for the next section, again distinguishing AI verification from user confirmation.
 
-The exact evidence format is not fixed yet; learner-state storage will be designed separately.
+The exact learner-state storage format is not fixed yet; it will be designed separately.
 
-## 9. Policy checks
+## 10. Policy checks
 
 Before a transition, verify:
 
@@ -123,11 +130,12 @@ Before a transition, verify:
 3. Required Unit verification.
 4. For LCP: all Unit of the source lesson are eligible for lesson control.
 5. For CP: all lessons in the section have passed their LCP.
-6. Required assessment evidence is sufficient.
-7. Critical unresolved deficiencies are handled.
-8. The proposed transition matches the canonical route.
+6. Every mandatory assessment component has acceptable evidence.
+7. No mandatory component remains `NOT_VERIFIED`.
+8. Critical unresolved deficiencies are handled.
+9. The proposed transition matches the canonical route.
 
-## 10. Logical actions
+## 11. Logical actions
 
 ### Navigation
 - `GET_CURRENT_STATE`
@@ -141,6 +149,7 @@ Before a transition, verify:
 - `CONTINUE_UNIT`
 - `REVIEW_UNIT`
 - `VERIFY_UNIT`
+- `REQUEST_USER_CONFIRMATION`
 - `COMPLETE_UNIT`
 
 ### Lesson checkpoint
@@ -163,18 +172,20 @@ Before a transition, verify:
 
 These are logical protocol actions, not claims that ChatGPT Project currently exposes a programmable state-machine API.
 
-## 11. Separation of concerns
+## 12. Separation of concerns
 
 GitHub defines the canonical route and control objects. ChatGPT Project organizes actual learning. The mechanism and format for storing learner progress remain a separate design task.
 
-## 12. Design principles
+## 13. Design principles
 
 1. Canonical course and learner state are different things.
 2. Unit, LCP and CP are different control levels.
 3. Unit and chat are different concepts.
 4. Completion requires evidence.
-5. LCP controls progression between source lessons.
-6. CP controls progression between sections.
-7. Higher-level failure triggers targeted remediation, not automatic repetition of everything.
-8. The learner should not manually reconstruct the route.
-9. The logical protocol must remain compatible with a future software Orchestrator.
+5. Evidence source must be explicit.
+6. User confirmation is valid only where the task permits it.
+7. LCP controls progression between source lessons.
+8. CP controls progression between sections.
+9. Higher-level failure triggers targeted remediation, not automatic repetition of everything.
+10. The learner should not manually reconstruct the route.
+11. The logical protocol must remain compatible with a future software Orchestrator.
