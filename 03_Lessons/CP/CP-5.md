@@ -1,6 +1,6 @@
 # CP-5 — Section 5: Швеция, культура и продвинутые грамматические темы
 
-**Status:** Provisional canonical assessment design; source validation **PENDING — required source pages are not present in the current PDF**.  
+**Status:** Canonical assessment design  
 **Section:** 5  
 **Covered Lessons:** 16–18  
 **Covered Units:** 16.1–16.4, 17.1–17.2, 18.1–18.4
@@ -12,31 +12,39 @@
 
 ### C1 — Вокзал и Швеция
 **Task:** решить текстовую ситуацию на вокзале и затем описать маршрут/план поездки по Швеции с целевой лексикой.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** самостоятельный сценарий вокзала и связное описание маршрута/плана поездки по Швеции.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** обучающийся корректно объединяет лексику вокзала, направлений и страноведческого материала.
 
 ### C2 — Продвинутые глагольные конструкции
 **Task:** выполнить преобразования и связное описание с причастием II, `bli/vara`, глаголами с частицами и `tro/tycka/tänka`.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** набор преобразований и самостоятельный связный текст с целевыми конструкциями.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** целевые формы употреблены корректно и в соответствующем контексте; преобразования сохраняют смысл исходных конструкций.
 
 ### C3 — Праздники
 **Task:** рассказать о шведском празднике, используя последовательность событий и целевые формы причастия/глаголов с частицами.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** связный рассказ о празднике с последовательностью событий и целевыми формами.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** рассказ демонстрирует самостоятельное применение тематической лексики и грамматических моделей Lesson 17.
 
 ### C4 — Отъезд и нереальность
 **Task:** решить новую аэропортовую ситуацию и преобразовать реальные ситуации в конструкции нереальности с перфектным инфинитивом и `skulle` + инфинитив.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** решение аэропортовой ситуации и набор самостоятельных преобразований в конструкции нереальности.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** целевые конструкции нереальности образованы и употреблены корректно, включая различение временных форм.
 
 ### C5 — Итоговая интеграция
 **Task:** написать связный текст о поездке/пребывании в Швеции с планами, воспоминаниями, культурной ситуацией и одним условно-нереальным фрагментом.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** единый самостоятельный связный текст, содержащий все четыре обязательных смысловых компонента и условно-нереальный фрагмент.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** C5 демонстрирует самостоятельный перенос материала всех трёх уроков и не является компиляцией отдельных ответов из C1–C4.
 
-## Success criteria
-Все обязательные компоненты имеют допустимое evidence; C5 демонстрирует самостоятельный перенос материала всех трёх уроков.
+## Overall success criteria
+Все обязательные компоненты имеют допустимое evidence; C5 демонстрирует самостоятельный перенос материала всех трёх уроков. Source support для всех входящих Units подтверждён матрицей трассировки `56/56 PAGE_VERIFIED`.
 
 ## Remediation / Recheck
-Определить дефицитные блоки, выполнить targeted remediation и повторить соответствующие компоненты. После source validation при необходимости обновить assessment scope.
+Определить дефицитные блоки, выполнить targeted remediation и повторить соответствующие компоненты CP. Успешные компоненты не требуют повторения, если правила reassessment не устанавливают иное.
 
 ## References
-Lessons 16–18; Units 16.1–18.4; `Section.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
-
-> **Design note:** tasks are project-designed from the current Unit definitions and are not claimed to be source-derived until the missing source pages are verified.
+Lessons 16–18; Units 16.1–18.4; `LCP-16`–`LCP-18`; `Section.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `02_Source/Unit.Source.Traceability.Matrix.v2.0.md`.
