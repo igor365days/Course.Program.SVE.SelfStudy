@@ -1,6 +1,6 @@
 # Unit Source Traceability Matrix
 
-**Version:** 2.0  
+**Version:** 2.1  
 **Status:** `PARTIALLY_REBUILT`  
 **Date:** 2026-08-17  
 **Primary source:** `02_Source/Book.Course.Structure.v1.0.md`
@@ -9,7 +9,7 @@
 
 This matrix is the working control surface for rebuilding the 56 Unit definitions from the single canonical book map.
 
-The first batch (Lessons 1–3) has now been directly re-audited against the supplied PDF. The remaining rows retain explicit non-verified states.
+The first two direct re-audit batches (Lessons 1–6) have now been completed against the supplied PDF. Remaining rows retain explicit non-verified states.
 
 ## Matrix
 
@@ -28,16 +28,16 @@ The first batch (Lessons 1–3) has now been directly re-audited against the sup
 | 3.2 | 3 | Глаголы с постлагольными частицами; составное глагольное сказуемое | 27 | available and inspected | `PAGE_VERIFIED` |
 | 3.3 | 3 | Обратный/вопросительный порядок слов; место фразовых обстоятельств | 28–29 | available and inspected | `PAGE_VERIFIED` |
 | 3.4 | 3 | Количественные числительные 0–20; обозначение времени | 29–30 | available and inspected | `PAGE_VERIFIED` |
-| 4.1 | 4 | Lesson 4 source-map items | 39–50 | available | `REBUILD_REQUIRED` |
-| 4.2 | 4 | Lesson 4 source-map items | 39–50 | available | `REBUILD_REQUIRED` |
-| 4.3 | 4 | Lesson 4 source-map items | 39–50 | available | `REBUILD_REQUIRED` |
-| 4.4 | 4 | Lesson 4 source-map items | 39–50 | available | `REBUILD_REQUIRED` |
-| 5.1 | 5 | Lesson 5 source-map items | 51–62 | available | `REBUILD_REQUIRED` |
-| 5.2 | 5 | Lesson 5 source-map items | 51–62 | available | `REBUILD_REQUIRED` |
-| 5.3 | 5 | Lesson 5 source-map items | 51–62 | available | `REBUILD_REQUIRED` |
-| 6.1 | 6 | Lesson 6 source-map items | 63–73 | available | `REBUILD_REQUIRED` |
-| 6.2 | 6 | Lesson 6 source-map items | 63–73 | available | `REBUILD_REQUIRED` |
-| 6.3 | 6 | Lesson 6 source-map items | 63–73 | available | `REBUILD_REQUIRED` |
+| 4.1 | 4 | Прилагательные; цвета; пространственные предлоги; жилище; мебель; домашний обиход | 42–45 | available and inspected | `PAGE_VERIFIED` |
+| 4.2 | 4 | Употребление артиклей; множественное число 1–3 склонений; первое склонение | 39–40 | available and inspected | `PAGE_VERIFIED` |
+| 4.3 | 4 | Второе и третье склонение; множественное число; определённый артикль множественного числа | 40–41 | available and inspected | `PAGE_VERIFIED` |
+| 4.4 | 4 | Неопределённая форма прилагательного; четвёртое и пятое склонение | 41–42, 47–48 | available and inspected | `PAGE_VERIFIED` |
+| 5.1 | 5 | Родственники; профессии; место работы; семейная лексика | 55–62 | available and inspected | `PAGE_VERIFIED` |
+| 5.2 | 5 | Особенности множественного числа; притяжательные местоимения | 51–52 | available and inspected | `PAGE_VERIFIED` |
+| 5.3 | 5 | Числительные от 21; употребление числительных; формы прилагательных | 53–54 | available and inspected | `PAGE_VERIFIED` |
+| 6.1 | 6 | Продукты; блюда; напитки; приготовление пищи; ресторан | 65–67, 72–73 | available and inspected | `PAGE_VERIFIED` |
+| 6.2 | 6 | Артикли с веществами/продуктами; bruka; падежи; родительный падеж | 63–64 | available and inspected | `PAGE_VERIFIED` |
+| 6.3 | 6 | jätte-; объектные местоимения; модальные глаголы | 64, 69–71 | available and inspected | `PAGE_VERIFIED` |
 | 7.1 | 7 | Lesson 7 source-map items | 74–85 | available | `REBUILD_REQUIRED` |
 | 7.2 | 7 | Lesson 7 source-map items | 74–85 | available | `REBUILD_REQUIRED` |
 | 7.3 | 7 | Lesson 7 source-map items | 74–85 | available | `REBUILD_REQUIRED` |
@@ -74,22 +74,21 @@ The first batch (Lessons 1–3) has now been directly re-audited against the sup
 
 ## Current result
 
-- `PAGE_VERIFIED`: **13 Units** (Lessons 1–3).
+- `PAGE_VERIFIED`: **23 Units** (Lessons 1–6).
 - `PARTIAL_PAGE_VERIFIED`: **2 Units** (Lesson 13, only where available pages permit partial verification).
-- `REBUILD_REQUIRED`: **22 Units** (Lessons 4–12).
-- `SOURCE_NOT_AVAILABLE`: **19 Units** (Lessons 14–18).
+- `REBUILD_REQUIRED`: **16 Units** (Lessons 7–12).
+- `SOURCE_NOT_AVAILABLE`: **15 Units** (Lessons 14–18).
 
 Total: **56 Units**.
 
 ## Rebuild order
 
-1. Lessons 4–6.
-2. Lessons 7–9.
-3. Lessons 10–12.
-4. Available part of Lesson 13.
-5. Lessons 14–18 after source recovery.
-6. LCP re-audit.
-7. CP re-audit.
+1. Lessons 7–9.
+2. Lessons 10–12.
+3. Available part of Lesson 13.
+4. Lessons 14–18 after source recovery.
+5. LCP re-audit.
+6. CP re-audit.
 
 ## Required fields for each completed Unit row
 
@@ -101,7 +100,7 @@ Total: **56 Units**.
 - source-derived content;
 - project-added pedagogical content;
 - verification criterion;
-- transition to next Unit.
+- transition to the next Unit.
 
 ## Integrity rule
 
