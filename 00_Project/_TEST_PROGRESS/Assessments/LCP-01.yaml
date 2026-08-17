@@ -1,0 +1,30 @@
+schema_version: "1.1"
+control_id: "LCP-01"
+type: "LCP"
+section_id: "S01"
+lesson_id: "L01"
+
+attempts:
+  - assessment_id: "ASM-TEST-LCP-01-01"
+    attempt_number: 1
+    started_at: "2026-08-17T10:57:00+03:00"
+    completed_at: null
+    status: "IN_PROGRESS"
+    result: null
+
+    components: []
+
+    summary:
+      strengths: []
+      deficiencies: []
+
+    remediation:
+      required: false
+      target_ids: []
+      reason_ids: []
+
+    recheck:
+      required: false
+      previous_assessment_id: null
+
+    decision: null
