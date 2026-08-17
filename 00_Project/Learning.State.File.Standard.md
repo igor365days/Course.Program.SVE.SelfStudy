@@ -26,7 +26,7 @@ last_assessment_id: null
 current:
   section_id: "S01"
   lesson_id: "L01"
-  unit_id: "U01.01"
+  unit_id: "1.1"
   control_type: null
   control_id: null
   phase: "UNIT"
@@ -51,7 +51,7 @@ blocking:
 next_action:
   action: "START_UNIT"
   target_type: "UNIT"
-  target_id: "U01.01"
+  target_id: "1.1"
 ```
 
 При `NOT_STARTED` поля текущей позиции могут быть `null` до инициализации Progress.
@@ -60,17 +60,17 @@ next_action:
 
 Идентификаторы являются ссылками на канонические объекты курса и не создаются этим стандартом.
 
-Рекомендуемые формы:
+Для текущей канонической программы используются:
 
 ```text
 Section: S01 ... S05
 Lesson: L01 ... L18
-Unit: U01.01 ...
+Unit: 1.1, 1.2 ... 18.4
 LCP: LCP-01 ... LCP-18
-CP: CP-01 ... CP-05
+CP: CP-1 ... CP-5
 ```
 
-Фактические идентификаторы должны соответствовать каноническим определениям курса.
+Фактический идентификатор всегда должен точно соответствовать каноническому определению курса. Нельзя самостоятельно преобразовывать `1.1` в `U01.01` или другой формат.
 
 ## 4. Допустимые значения progress_status
 
@@ -161,7 +161,7 @@ blocking:
 next_action:
   action: "START_UNIT"
   target_type: "UNIT"
-  target_id: "U01.01"
+  target_id: "1.1"
 ```
 
 `action` принимает только значения, определённые `Learning.Progress.Protocol`:
