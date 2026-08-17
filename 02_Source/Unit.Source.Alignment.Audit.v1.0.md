@@ -1,6 +1,6 @@
 # Unit Source Alignment Audit
 
-**Version:** 2.1  
+**Version:** 2.2  
 **Status:** `PARTIALLY_REBUILT`  
 **Source:** `02_Source/Book.Course.Structure.v1.0.md`  
 **Date:** 2026-08-17
@@ -11,6 +11,27 @@ This audit controls the rebuild of Unit-to-book alignment after eliminating the 
 
 The 56 Unit files are project design artifacts. They are **not** evidence of what the book contains. Source alignment is established against the single canonical book map and, where possible, direct inspection of the supplied PDF pages.
 
+## Current result
+
+Two direct re-audit batches are complete:
+
+- **23 Units `PAGE_VERIFIED`** — Lessons 1–6.
+- **2 Units `PARTIAL_PAGE_VERIFIED`** — Lesson 13, because only printed pages 140–146 are present.
+- **16 Units `REBUILD_REQUIRED`** — Lessons 7–12.
+- **15 Units `SOURCE_NOT_AVAILABLE`** — Lessons 14–18.
+
+Total: **56 Units**.
+
+## Verified batches
+
+### Lessons 1–3
+
+All 13 Units were directly checked against the supplied PDF and assigned exact source-page ranges in the traceability matrix.
+
+### Lessons 4–6
+
+All 10 Units were directly checked against the supplied PDF. Several legacy broad page ranges were narrowed to the actual source blocks; Unit 4.4 correctly uses a non-contiguous page range because the adjective block and 4th/5th declension block are separated in the book.
+
 ## Status vocabulary
 
 - `REBUILD_REQUIRED` — the Unit must be rechecked against the canonical source map.
@@ -19,17 +40,6 @@ The 56 Unit files are project design artifacts. They are **not** evidence of wha
 - `SOURCE_NOT_AVAILABLE` — the required book pages are outside the current PDF.
 - `PROJECT_ONLY` — content is project-added and must not be presented as book-derived.
 
-## Current result
-
-The first direct re-audit batch is complete:
-
-- **13 Units `PAGE_VERIFIED`** — Lessons 1–3.
-- **2 Units `PARTIAL_PAGE_VERIFIED`** — Lesson 13, because only printed pages 140–146 are present.
-- **22 Units `REBUILD_REQUIRED`** — Lessons 4–12.
-- **19 Units `SOURCE_NOT_AVAILABLE`** — Lessons 14–18.
-
-Total: **56 Units**.
-
 ## Unit inventory
 
 | Lesson | Units | Current status |
@@ -37,9 +47,9 @@ Total: **56 Units**.
 | 1 | 1.1–1.5 | `PAGE_VERIFIED` |
 | 2 | 2.1–2.4 | `PAGE_VERIFIED` |
 | 3 | 3.1–3.4 | `PAGE_VERIFIED` |
-| 4 | 4.1–4.4 | `REBUILD_REQUIRED` |
-| 5 | 5.1–5.3 | `REBUILD_REQUIRED` |
-| 6 | 6.1–6.3 | `REBUILD_REQUIRED` |
+| 4 | 4.1–4.4 | `PAGE_VERIFIED` |
+| 5 | 5.1–5.3 | `PAGE_VERIFIED` |
+| 6 | 6.1–6.3 | `PAGE_VERIFIED` |
 | 7 | 7.1–7.3 | `REBUILD_REQUIRED` |
 | 8 | 8.1–8.3 | `REBUILD_REQUIRED` |
 | 9 | 9.1–9.4 | `REBUILD_REQUIRED` |
@@ -52,30 +62,6 @@ Total: **56 Units**.
 | 16 | 16.1–16.4 | `SOURCE_NOT_AVAILABLE` |
 | 17 | 17.1–17.2 | `SOURCE_NOT_AVAILABLE` |
 | 18 | 18.1–18.4 | `SOURCE_NOT_AVAILABLE` |
-
-## Verified batch
-
-### Lesson 1
-
-- `1.1` — pp. 6–11: basic pronunciation and Swedish sounds.
-- `1.2` — pp. 12–13: Swedish alphabet, including `å`, `ä`, `ö`.
-- `1.3` — pp. 11–12: specific consonants and spelling combinations.
-- `1.4` — p. 14: tonic accent.
-- `1.5` — p. 15: intonation in declarative and interrogative sentences.
-
-### Lesson 2
-
-- `2.1` — pp. 20–22: greetings, introductions and asking how someone is doing.
-- `2.2` — pp. 16–17: personal/non-personal verb forms, infinitive and present tense.
-- `2.3` — pp. 17–19: sentence members and sentence types.
-- `2.4` — pp. 19–26: word order, noun gender, articles, demonstrative construction and personal pronouns.
-
-### Lesson 3
-
-- `3.1` — pp. 30–35: days, time periods, frequency, seasons and months.
-- `3.2` — p. 27: post-verbal particles and compound verbal predicate.
-- `3.3` — pp. 28–29: word order and position of phrasal adverbials.
-- `3.4` — pp. 29–30: numbers 0–20 and telling time.
 
 ## Source availability boundary
 
