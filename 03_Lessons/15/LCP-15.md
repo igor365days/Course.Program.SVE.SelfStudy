@@ -1,43 +1,43 @@
 # LCP-15 — Lesson 15
 
-**Status:** Provisional canonical assessment design; source validation **PENDING — required source pages are not present in the current PDF**.  
+**Status:** `SOURCE_VERIFIED` — assessment design re-audited against the supplied complete PDF.  
 **Source lesson:** 15  
 **Covered Unit:** 15.1–15.3
 
 ## Purpose
-Проверить интегрированное использование медицинской и культурной лексики, причастия I и целевых инфинитивных конструкций согласно текущей проектной source-map/Unit definitions.
+Проверить интегрированное использование медицинской и культурной лексики, причастия I и выделительной конструкции.
 
 ## Required competencies
-1. Медицинская и аптечная лексика.
-2. Причастие I.
-3. Инфинитивные конструкции.
-4. Лексика театра и культурной коммуникации.
+1. Медицинская, аптечная и театральная лексика.
+2. Причастие I и его синтаксические функции.
+3. Выделительная конструкция `det är ... som`.
+4. Тематический материал об August Strindberg и театрах Стокгольма.
 
 ## Assessment components
 
 ### A1 — Медицинская ситуация
-**Task:** выполнить текстовый сценарий обращения в аптеку/к медицинскому специалисту с описанием ситуации и необходимой информацией.  
+**Task:** выполнить текстовый сценарий обращения в аптеку/к врачу с использованием ключевой лексики источника.
 **Verification:** `AI_VERIFIED`.
 
 ### A2 — Причастие I
-**Task:** образовать и использовать формы причастия I в описании людей/ситуаций и исправить заданные ошибки.  
+**Task:** образовать и использовать формы причастия I в заданных синтаксических функциях и исправить ошибки.
 **Verification:** `AI_VERIFIED`.
 
-### A3 — Инфинитивные конструкции
-**Task:** объединить и преобразовать предложения с целевыми инфинитивными конструкциями.  
+### A3 — Выделительная конструкция
+**Task:** преобразовать предложения и построить повествовательные и вопросительные варианты с `det är ... som`, включая случаи возможного опущения `som`.
 **Verification:** `AI_VERIFIED`.
 
 ### A4 — Театр и культура
-**Task:** выполнить текстовую коммуникативную ситуацию о посещении театра, включая вопросы, ответы и выражение предпочтений/планов.  
+**Task:** выполнить текстовую коммуникативную ситуацию о посещении театра с использованием тематического материала урока.
 **Verification:** `AI_VERIFIED`.
 
 ## Success criteria
-Все обязательные компоненты имеют достаточное evidence. Содержательная source validation остаётся незавершённой до получения страниц Lesson 15.
+Все обязательные компоненты выполнены с допустимым evidence.
 
 ## Remediation / Recheck
-После source validation при необходимости скорректировать task scope, затем выполнить повторную проверку.
+Повторить только дефицитный блок и соответствующий компонент LCP.
 
 ## References
-Units 15.1–15.3; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
+Units 15.1–15.3; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; source pages 161–171.
 
-> **Design note:** assessment tasks are project-designed from the current Unit definitions and are not claimed to be source-derived until the missing source pages are verified.
+> **Source note:** body pages 161–171 are present in the newly supplied complete PDF and were used for this re-audit.
