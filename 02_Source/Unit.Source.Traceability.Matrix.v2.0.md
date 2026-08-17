@@ -1,6 +1,6 @@
 # Unit Source Traceability Matrix
 
-**Version:** 2.1  
+**Version:** 2.2  
 **Status:** `PARTIALLY_REBUILT`  
 **Date:** 2026-08-17  
 **Primary source:** `02_Source/Book.Course.Structure.v1.0.md`
@@ -9,7 +9,7 @@
 
 This matrix is the working control surface for rebuilding the 56 Unit definitions from the single canonical book map.
 
-The first two direct re-audit batches (Lessons 1–6) have now been completed against the supplied PDF. Remaining rows retain explicit non-verified states.
+Three direct re-audit batches (Lessons 1–9) have now been completed against the supplied PDF. Remaining rows retain explicit non-verified states.
 
 ## Matrix
 
@@ -38,16 +38,16 @@ The first two direct re-audit batches (Lessons 1–6) have now been completed ag
 | 6.1 | 6 | Продукты; блюда; напитки; приготовление пищи; ресторан | 65–67, 72–73 | available and inspected | `PAGE_VERIFIED` |
 | 6.2 | 6 | Артикли с веществами/продуктами; bruka; падежи; родительный падеж | 63–64 | available and inspected | `PAGE_VERIFIED` |
 | 6.3 | 6 | jätte-; объектные местоимения; модальные глаголы | 64, 69–71 | available and inspected | `PAGE_VERIFIED` |
-| 7.1 | 7 | Lesson 7 source-map items | 74–85 | available | `REBUILD_REQUIRED` |
-| 7.2 | 7 | Lesson 7 source-map items | 74–85 | available | `REBUILD_REQUIRED` |
-| 7.3 | 7 | Lesson 7 source-map items | 74–85 | available | `REBUILD_REQUIRED` |
-| 8.1 | 8 | Lesson 8 source-map items | 86–96 | available | `REBUILD_REQUIRED` |
-| 8.2 | 8 | Lesson 8 source-map items | 86–96 | available | `REBUILD_REQUIRED` |
-| 8.3 | 8 | Lesson 8 source-map items | 86–96 | available | `REBUILD_REQUIRED` |
-| 9.1 | 9 | Lesson 9 source-map items | 97–107 | available | `REBUILD_REQUIRED` |
-| 9.2 | 9 | Lesson 9 source-map items | 97–107 | available | `REBUILD_REQUIRED` |
-| 9.3 | 9 | Lesson 9 source-map items | 97–107 | available | `REBUILD_REQUIRED` |
-| 9.4 | 9 | Lesson 9 source-map items | 97–107 | available | `REBUILD_REQUIRED` |
+| 7.1 | 7 | Фразы магазина; одежда; повелительное наклонение | 74, 76–77, 81–83 | available and inspected | `PAGE_VERIFIED` |
+| 7.2 | 7 | den här/det här/den där/det där; denna; определённость; определённая форма прилагательного; свободностоящий артикль; группа adj+noun | 75–79 | available and inspected | `PAGE_VERIFIED` |
+| 7.3 | 7 | som; sådan; annan; отрицательная приставка o-; se ... ut | 79–81 | available and inspected | `PAGE_VERIFIED` |
+| 8.1 | 8 | Страны; столицы; жители; отпуск | 93–94 | available and inspected | `PAGE_VERIFIED` |
+| 8.2 | 8 | Претерит; супин; неправильные и сильные глаголы | 86–89, 94–95 | available and inspected | `PAGE_VERIFIED` |
+| 8.3 | 8 | sig; переходные/непереходные и возвратные глаголы; sin; sin/hans/hennes/deras | 90–92 | available and inspected | `PAGE_VERIFIED` |
+| 9.1 | 9 | Перелёт; паспортный и таможенный контроль; аэропорт | 102–104, 106–109 | available and inspected | `PAGE_VERIFIED` |
+| 9.2 | 9 | Перфект; сложноподчинённые предложения и союзы | 97–98 | available and inspected | `PAGE_VERIFIED` |
+| 9.3 | 9 | Порядок слов в придаточных; någon; ingen | 99–101 | available and inspected | `PAGE_VERIFIED` |
+| 9.4 | 9 | Краткие ответы на общий вопрос | 101–102 | available and inspected | `PAGE_VERIFIED` |
 | 10.1 | 10 | Lesson 10 source-map items | 108–117 | available | `REBUILD_REQUIRED` |
 | 10.2 | 10 | Lesson 10 source-map items | 108–117 | available | `REBUILD_REQUIRED` |
 | 11.1 | 11 | Lesson 11 source-map items | 118–128 | available | `REBUILD_REQUIRED` |
@@ -74,21 +74,20 @@ The first two direct re-audit batches (Lessons 1–6) have now been completed ag
 
 ## Current result
 
-- `PAGE_VERIFIED`: **23 Units** (Lessons 1–6).
+- `PAGE_VERIFIED`: **33 Units** (Lessons 1–9).
 - `PARTIAL_PAGE_VERIFIED`: **2 Units** (Lesson 13, only where available pages permit partial verification).
-- `REBUILD_REQUIRED`: **16 Units** (Lessons 7–12).
+- `REBUILD_REQUIRED`: **6 Units** (Lessons 10–12).
 - `SOURCE_NOT_AVAILABLE`: **15 Units** (Lessons 14–18).
 
 Total: **56 Units**.
 
 ## Rebuild order
 
-1. Lessons 7–9.
-2. Lessons 10–12.
-3. Available part of Lesson 13.
-4. Lessons 14–18 after source recovery.
-5. LCP re-audit.
-6. CP re-audit.
+1. Lessons 10–12.
+2. Available part of Lesson 13.
+3. Lessons 14–18 after source recovery.
+4. LCP re-audit.
+5. CP re-audit.
 
 ## Required fields for each completed Unit row
 
