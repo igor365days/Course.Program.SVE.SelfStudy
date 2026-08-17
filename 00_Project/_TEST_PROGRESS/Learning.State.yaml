@@ -1,0 +1,36 @@
+schema_version: "1.1"
+project: "Course.Program.SVE.SelfStudy"
+progress_status: "NOT_STARTED"
+updated_at: null
+last_event_id: null
+last_assessment_id: null
+
+current:
+  section_id: null
+  lesson_id: null
+  unit_id: null
+  control_type: null
+  control_id: null
+  phase: null
+  status: "NOT_STARTED"
+
+completed:
+  units: []
+  lcps: []
+  cps: []
+
+remediation:
+  active: false
+  target_type: null
+  target_id: null
+  reason_ids: []
+
+blocking:
+  active: false
+  reason: null
+  required_action: null
+
+next_action:
+  action: "START_UNIT"
+  target_type: "UNIT"
+  target_id: "1.1"
