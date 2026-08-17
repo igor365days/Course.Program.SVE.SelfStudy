@@ -1,6 +1,6 @@
 # LCP-13 — Lesson 13
 
-**Status:** Provisional canonical assessment design; source validation **PARTIAL** because the current PDF reaches printed page 146 while Lesson 13 continues through page 149.  
+**Status:** `SOURCE_VERIFIED` — assessment design re-audited against the complete supplied PDF.  
 **Source lesson:** 13  
 **Covered Unit:** 13.1–13.2
 
@@ -16,22 +16,24 @@
 ## Assessment components
 
 ### A1 — Достопримечательности
-**Task:** описать несколько достопримечательностей Стокгольма по заданным признакам и ответить на вопросы о них.  
+**Task:** описать несколько достопримечательностей Стокгольма по заданным признакам и ответить на вопросы о них.
 **Verification:** `AI_VERIFIED`.
 
 ### A2 — Степени сравнения
-**Task:** образовать сравнительную и превосходную степени для заданных прилагательных, включая нерегулярные формы, и использовать их в контексте сравнения.  
+**Task:** образовать сравнительную и превосходную степени для заданных прилагательных и использовать их в контексте сравнения.
 **Verification:** `AI_VERIFIED`.
 
 ### A3 — Телефонный разговор
-**Task:** выполнить текстовый телефонный сценарий: представиться, назвать причину звонка, договориться о времени/месте встречи и завершить разговор.  
+**Task:** выполнить текстовый телефонный сценарий: представиться, назвать причину звонка, договориться о времени/месте встречи и завершить разговор.
 **Verification:** `AI_VERIFIED`.
 
 ## Success criteria
-Все обязательные компоненты имеют достаточное evidence. Компоненты, относящиеся к материалу печатных страниц 147–149, могут быть окончательно подтверждены только после получения отсутствующих страниц источника.
+Все обязательные компоненты имеют достаточное evidence.
 
 ## Remediation / Recheck
-Повторить дефицитный блок и повторить соответствующий компонент после завершения source validation.
+Повторить дефицитный блок и соответствующий компонент LCP.
 
 ## References
-Units 13.1–13.2; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
+Units 13.1–13.2; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; source pages 140–149.
+
+> **Source note:** the previously missing printed pages 147–149 are present in the newly supplied complete PDF and were included in this re-audit.
