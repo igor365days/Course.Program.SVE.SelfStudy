@@ -1,6 +1,6 @@
 # CP-4 — Section 4: Общественные и культурные ситуации
 
-**Status:** Provisional canonical assessment design; source validation **PARTIAL** because the current PDF does not contain the complete Lesson 13 and does not contain Lessons 14–15.  
+**Status:** Canonical assessment design  
 **Section:** 4  
 **Covered Lessons:** 12–15  
 **Covered Units:** 12.1–12.2, 13.1–13.2, 14.1–14.2, 15.1–15.3
@@ -12,27 +12,33 @@
 
 ### C1 — Банк и почта
 **Task:** решить новую практическую ситуацию, включающую денежную операцию и отправку письма/открытки, с целевыми вопросами и количественными конструкциями.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** самостоятельный сценарий с вопросами, денежной операцией, отправкой письма/открытки и количественными формами.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** обучающийся корректно объединяет банковскую/почтовую лексику и изученные грамматические конструкции.
 
 ### C2 — Стокгольм и телефон
 **Task:** получить/дать информацию о достопримечательности по телефону, представиться, договориться о встрече и сравнить несколько объектов.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** последовательный диалог/текст с представлением, телефонным обменом информацией, договорённостью и сравнением.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** все части ситуации связаны в единый самостоятельный сценарий; сравнительные формы употреблены уместно.
 
 ### C3 — Медицинская и культурная ситуация
 **Task:** решить текстовый сценарий обращения в аптеку/медицинскую ситуацию и затем выполнить культурную ситуацию, связанную с театром.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** два связанных самостоятельных ответа: медицинский/аптечный сценарий и культурный сценарий о театре.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** целевая лексика и грамматические конструкции используются уместно в обеих ситуациях.
 
 ### C4 — Интегрированный сценарий
 **Task:** самостоятельно решить новую общественно-культурную ситуацию, в которой необходимо получить информацию, задать косвенный вопрос, использовать количественные/союзные конструкции и поддержать связный диалог.  
-**Verification:** `AI_VERIFIED`.
+**Expected evidence:** единый самостоятельный диалог/текст с косвенным вопросом, количественными и союзными конструкциями.  
+**Verification:** `AI_VERIFIED`.  
+**Success criterion:** C4 демонстрирует перенос материала Lessons 12–15 в новую ситуацию без копирования LCP.
 
-## Success criteria
-Все обязательные компоненты имеют допустимое evidence. После получения отсутствующих исходных страниц scope CP-4 должен быть повторно сопоставлен с окончательной source verification Lessons 13–15.
+## Overall success criteria
+Все обязательные компоненты имеют допустимое evidence, а C4 демонстрирует интегрированный перенос материала всех четырёх уроков. Source support для всех входящих Units подтверждён матрицей трассировки `56/56 PAGE_VERIFIED`.
 
 ## Remediation / Recheck
-Определить дефицитные блоки, выполнить targeted remediation и повторить соответствующие компоненты. После source validation при необходимости обновить assessment scope.
+Определить дефицитные блоки, выполнить targeted remediation и повторить соответствующие компоненты CP. Успешные компоненты не требуют повторения, если правила reassessment не устанавливают иное.
 
 ## References
-Lessons 12–15; Units 12.1–15.3; `Section.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
-
-> **Design note:** tasks are project-designed from the current Unit definitions and are not claimed to be fully source-derived until the missing source pages are verified.
+Lessons 12–15; Units 12.1–15.3; `LCP-12`–`LCP-15`; `Section.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `02_Source/Unit.Source.Traceability.Matrix.v2.0.md`.
