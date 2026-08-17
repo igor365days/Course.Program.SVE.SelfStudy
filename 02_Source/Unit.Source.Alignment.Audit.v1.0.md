@@ -1,6 +1,6 @@
 # Unit Source Alignment Audit
 
-**Version:** 2.2  
+**Version:** 2.3  
 **Status:** `PARTIALLY_REBUILT`  
 **Source:** `02_Source/Book.Course.Structure.v1.0.md`  
 **Date:** 2026-08-17
@@ -13,11 +13,11 @@ The 56 Unit files are project design artifacts. They are **not** evidence of wha
 
 ## Current result
 
-Two direct re-audit batches are complete:
+Three direct re-audit batches are complete:
 
-- **23 Units `PAGE_VERIFIED`** — Lessons 1–6.
+- **33 Units `PAGE_VERIFIED`** — Lessons 1–9.
 - **2 Units `PARTIAL_PAGE_VERIFIED`** — Lesson 13, because only printed pages 140–146 are present.
-- **16 Units `REBUILD_REQUIRED`** — Lessons 7–12.
+- **6 Units `REBUILD_REQUIRED`** — Lessons 10–12.
 - **15 Units `SOURCE_NOT_AVAILABLE`** — Lessons 14–18.
 
 Total: **56 Units**.
@@ -25,12 +25,13 @@ Total: **56 Units**.
 ## Verified batches
 
 ### Lessons 1–3
-
-All 13 Units were directly checked against the supplied PDF and assigned exact source-page ranges in the traceability matrix.
+13 Units directly checked.
 
 ### Lessons 4–6
+10 Units directly checked. Legacy broad page ranges were narrowed to actual source blocks where appropriate.
 
-All 10 Units were directly checked against the supplied PDF. Several legacy broad page ranges were narrowed to the actual source blocks; Unit 4.4 correctly uses a non-contiguous page range because the adjective block and 4th/5th declension block are separated in the book.
+### Lessons 7–9
+10 Units directly checked. Several Unit ranges are non-contiguous because the book separates grammar blocks from thematic vocabulary and practice sections.
 
 ## Status vocabulary
 
@@ -50,9 +51,9 @@ All 10 Units were directly checked against the supplied PDF. Several legacy broa
 | 4 | 4.1–4.4 | `PAGE_VERIFIED` |
 | 5 | 5.1–5.3 | `PAGE_VERIFIED` |
 | 6 | 6.1–6.3 | `PAGE_VERIFIED` |
-| 7 | 7.1–7.3 | `REBUILD_REQUIRED` |
-| 8 | 8.1–8.3 | `REBUILD_REQUIRED` |
-| 9 | 9.1–9.4 | `REBUILD_REQUIRED` |
+| 7 | 7.1–7.3 | `PAGE_VERIFIED` |
+| 8 | 8.1–8.3 | `PAGE_VERIFIED` |
+| 9 | 9.1–9.4 | `PAGE_VERIFIED` |
 | 10 | 10.1–10.2 | `REBUILD_REQUIRED` |
 | 11 | 11.1–11.2 | `REBUILD_REQUIRED` |
 | 12 | 12.1–12.2 | `REBUILD_REQUIRED` |
