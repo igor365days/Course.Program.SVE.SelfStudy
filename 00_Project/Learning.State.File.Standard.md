@@ -1,65 +1,203 @@
 # Стандарт файла состояния обучения
 
-**Файл:** `04_Progress/Learning.State.yaml`  
-**Формат:** YAML  
-**Статус:** Канонический стандарт
+**Документ:** Learning.State.File.Standard
+**Файл:** `04_Progress/Learning.State.yaml`
+**Формат:** YAML
+**Версия:** 1.1
+**Статус:** Канонический стандарт проекта
+**Применяется к:** Course.Program.SVE.SelfStudy
 
-## Назначение
+## 1. Назначение
 
-Определяет структуру компактного текущего состояния Progress одного обучающегося.
+`Learning.State.yaml` — компактный оперативный снимок текущего состояния прохождения курса.
 
-Файл является оперативным снимком, а не историческим источником истины.
+Он не является историческим источником истины. История восстанавливается из `Learning.Events.jsonl` и Assessment Records.
 
-## Каноническая структура
+## 2. Каноническая структура
 
 ```yaml
-course: Course.Program.SVE.SelfStudy
-state_version: 1
-updated_at: YYYY-MM-DDTHH:MM:SS
+schema_version: "1.1"
+project: "Course.Program.SVE.SelfStudy"
+progress_status: "NOT_STARTED"
+updated_at: "2026-08-17T00:00:00Z"
+last_event_id: null
+last_assessment_id: null
 
 current:
-  section: 1
-  lesson: 1
-  unit: 1.1
-  control: null
-  status: IN_PROGRESS
+  section_id: "S01"
+  lesson_id: "L01"
+  unit_id: "U01.01"
+  control_type: null
+  control_id: null
+  phase: "UNIT"
+  status: "IN_PROGRESS"
 
-progress:
-  units_completed: 0
-  units_total: 56
-  lessons_completed: 0
-  lessons_total: 18
-  lcps_passed: 0
-  lcps_total: 18
-  cps_passed: 0
-  cps_total: 5
-
-last_completed:
-  unit: null
-  lesson: null
-  lcp: null
-  cp: null
+completed:
+  units: []
+  lcps: []
+  cps: []
 
 remediation:
-  required: false
-  target: null
-  reason: null
+  active: false
+  target_type: null
+  target_id: null
+  reason_ids: []
 
-next_action: START_UNIT
-blocking_conditions: []
+blocking:
+  active: false
+  reason: null
+  required_action: null
+
+next_action:
+  action: "START_UNIT"
+  target_type: "UNIT"
+  target_id: "U01.01"
 ```
 
-## Правила
+При `NOT_STARTED` поля текущей позиции могут быть `null` до инициализации Progress.
 
-1. Здесь хранится только текущее состояние; стенограммы чатов исключаются.
-2. Счётчики должны соответствовать каноническим итоговым значениям курса.
-3. `current` определяет текущую позицию обучающегося на маршруте.
-4. `next_action` должен соответствовать каноническому маршруту и правилам Orchestrator.
-5. Обязательный нерешённый контроль нельзя исключать из `blocking_conditions`.
-6. Источник проверки при необходимости может быть указан значением `AI_VERIFIED`, `USER_CONFIRMED`, `NOT_VERIFIED`.
-7. Состояние может быть восстановлено из исторических событий и записей оценивания.
-8. Данные конкретного обучающегося никогда не должны записываться в канонические файлы курса.
+## 3. Идентификаторы
 
-## Отчётность
+Идентификаторы являются ссылками на канонические объекты курса и не создаются этим стандартом.
 
-Структура должна поддерживать краткие отчёты о текущей позиции, общем Progress, последнем завершённом контроле и следующем действии.
+Рекомендуемые формы:
+
+```text
+Section: S01 ... S05
+Lesson: L01 ... L18
+Unit: U01.01 ...
+LCP: LCP-01 ... LCP-18
+CP: CP-01 ... CP-05
+```
+
+Фактические идентификаторы должны соответствовать каноническим определениям курса.
+
+## 4. Допустимые значения progress_status
+
+```text
+NOT_STARTED
+IN_PROGRESS
+COMPLETED
+BLOCKED
+```
+
+`COMPLETED` используется только после успешного завершения всего курса.
+
+## 5. Поле current
+
+`control_type` принимает:
+
+```text
+null
+LCP
+CP
+```
+
+`phase` принимает:
+
+```text
+UNIT
+LCP
+CP
+REMEDIATION
+RECHECK
+```
+
+`status` принимает:
+
+```text
+NOT_STARTED
+IN_PROGRESS
+PASSED
+FAILED
+BLOCKED
+```
+
+Для обычной Unit `control_type` и `control_id` равны `null`.
+
+## 6. Поле completed
+
+```yaml
+completed:
+  units: []
+  lcps: []
+  cps: []
+```
+
+Массивы содержат только идентификаторы объектов, завершение которых подтверждено историческими данными.
+
+Unit считается завершённой только после `UNIT_VERIFIED` с приемлемыми обязательными компонентами.
+
+LCP/CP считаются завершёнными для маршрута только при успешном результате соответствующей контрольной попытки.
+
+## 7. Поле remediation
+
+```yaml
+remediation:
+  active: false
+  target_type: null
+  target_id: null
+  reason_ids: []
+```
+
+`target_type` принимает `UNIT`, `LCP`, `CP` или `null`.
+
+`reason_ids` содержит краткие стабильные идентификаторы выявленных дефицитов, если они предусмотрены Assessment Record.
+
+## 8. Поле blocking
+
+```yaml
+blocking:
+  active: false
+  reason: null
+  required_action: null
+```
+
+Если `active: true`, `next_action` не должен разрешать продвижение через блокирующий обязательный этап.
+
+## 9. Поле next_action
+
+```yaml
+next_action:
+  action: "START_UNIT"
+  target_type: "UNIT"
+  target_id: "U01.01"
+```
+
+`action` принимает только значения, определённые `Learning.Progress.Protocol`:
+
+```text
+START_UNIT
+CONTINUE_UNIT
+VERIFY_UNIT
+START_LCP
+COMPLETE_LCP
+START_CP
+COMPLETE_CP
+REMEDIATION
+RECHECK
+```
+
+`target_type` принимает `UNIT`, `LCP`, `CP` или `null`.
+
+## 10. Правила согласованности
+
+1. `current` должен соответствовать каноническому маршруту.
+2. `next_action` должен быть достижим из `current` без пропуска обязательного этапа.
+3. `completed` не может содержать объект, не подтверждённый Events/Assessments.
+4. `last_event_id`, если указан, должен существовать в `Learning.Events.jsonl`.
+5. `last_assessment_id`, если указан, должен существовать в Assessment Records.
+6. При `blocking.active: true` продвижение блокируется.
+7. При `remediation.active: true` следующий шаг должен вести к коррекции или повторной проверке.
+8. State не должен содержать результат, которого нет в исторических данных.
+9. Счётчики не являются источником истины и не должны вводиться в State отдельно от канонического маршрута; отчётность вычисляется из списков `completed` и Assessment Records.
+
+## 11. Обновление
+
+State обновляется после значимого перехода, а не после каждого сообщения чата.
+
+Канонический порядок:
+
+`Event/Assessment → State → READ BACK → VERIFY`.
+
+При конфликте SHA файл сначала перечитывается. Нельзя вслепую перезаписывать более новую версию.
