@@ -1,51 +1,52 @@
 # Source Gap Register
 
-**Version:** 1.0  
+**Version:** 2.0  
 **Date:** 2026-08-17  
-**Source:** supplied PDF `Шведский язык, самоучитель_copy(1).pdf`
+**Source:** complete supplied PDF `Шведский язык, самоучитель_copy(2).pdf`
 
-## Confirmed gap
+## Previous gap — RESOLVED
 
-The supplied PDF contains **150 PDF pages** and reaches printed book page **146**.
+The previous source set ended at printed page 146 and lacked printed pages 147–202. The user has now supplied a complete scan containing **232 PDF pages** and the full body of the book through the reference sections.
 
-The book table of contents states that the book continues through printed page **224**, including Lessons 13–18 and reference sections.
+## Recovered printed pages
 
-## Missing printed pages required for full body verification
-
-- **147–149** — remainder of Lesson 13; required to complete Unit 13.2.
+- **147–149** — remainder of Lesson 13.
 - **150–160** — Lesson 14.
 - **161–171** — Lesson 15.
 - **172–182** — Lesson 16.
 - **183–192** — Lesson 17.
 - **193–202** — Lesson 18.
-- **203–213** — exercise answer keys / reference material beginning after Lesson 18, according to the table of contents.
-- **214–217** — strong/irregular verb forms reference.
-- **218 onward** — dictionary/reference material listed in the table of contents.
+- **203–213** — exercise answer keys.
+- **214–217** — strong/irregular verb forms.
+- **218 onward** — dictionary/reference material.
 
 ## Effect on course project
 
-### Fully source-verifiable now
+### Fully source-verifiable
 
-Lessons 1–12 and Unit 13.1.
+**All Lessons 1–18 and all 56 Units.**
 
-### Partially source-verifiable now
+### No remaining source gaps
 
-Unit 13.2.
+- `PARTIAL_PAGE_VERIFIED`: 0
+- `SOURCE_NOT_AVAILABLE`: 0
+- `REBUILD_REQUIRED`: 0
 
-### Not source-verifiable now
+## Recovery verification
 
-Lessons 14–18 and all dependent LCP/CP claims that require their body content.
+The complete PDF was inspected at the previously missing lesson boundaries. In particular:
+
+- PDF p. 154 = printed p. 150, start of Lesson 14.
+- PDF p. 165 = printed p. 161, start of Lesson 15.
+- PDF p. 176 = printed p. 172, start of Lesson 16.
+- PDF p. 187 = printed p. 183, start of Lesson 17.
+- PDF p. 197 = printed p. 193, start of Lesson 18.
+- PDF p. 207 = printed p. 203, start of the exercise answer keys.
 
 ## Rule
 
-Do not reconstruct missing pages from memory, another edition, another scan, internet copies or generalized linguistic knowledge unless the user explicitly authorizes an external-source comparison. The current course source remains the supplied PDF.
+The complete supplied PDF is now the controlling source. Do not substitute another edition or external copy unless the user explicitly authorizes an external-source comparison.
 
-## Recovery action
+## Resolution
 
-When the missing pages are supplied, append them to the source set, verify that the printed page sequence is continuous, then:
-
-1. verify 13.2 pages 147–149;
-2. rebuild Units 14–18;
-3. re-audit LCP-13…LCP-18;
-4. re-audit CP-4 and CP-5;
-5. re-run the final integrity audit.
+The source-availability blocker is **CLOSED**. The project can proceed through full Unit → LCP → CP verification without waiting for additional book pages.
