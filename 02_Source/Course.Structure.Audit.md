@@ -1,45 +1,43 @@
 # Course Structure Audit
 
-**Status:** Structural baseline + source verification status corrected; LCP/CP assessment audit in progress  
-**Version:** 1.5
+**Status:** Single-source map established; project-to-source alignment requires re-audit  
+**Version:** 2.0
 
-## Result
+## Canonical source rule
 
-The course route contains **18 Lessons, 56 Unit, 18 LCP and 5 CP**. The canonical route and Unit boundaries remain unchanged.
+`02_Source/Book.Course.Structure.v1.0.md` is now the **single canonical source map of the book**.
 
-All 56 Unit definitions have been reviewed against `02_Source/Book.Course.Structure.v1.0.md`. Their canonical content, objectives, practice focus, verification criteria and transitions were corrected where previous definitions were too generic or assigned material to the wrong Unit.
+It was rebuilt directly from the «Содержание» pages of the user-supplied PDF. It contains only material and structure stated by the book. It does not contain the project's Unit/LCP/CP decomposition.
 
-## Source verification status
+Any previous derived book map is no longer an authority and must not be used to resolve discrepancies.
 
-The previous audit incorrectly stated that page-level verification was complete for Lessons 13–18. That statement is corrected here.
+## What the PDF directly establishes
 
-The currently attached scanned PDF contains **150 PDF pages**. The rendered pages show printed book page numbers through **146** on the final available page. Therefore the current source file does not contain the complete source material for Lessons 14–18 and does not contain the final pages of Lesson 13.
+The PDF's contents pages establish the sequence and named content of Lessons 1–18, including their printed starting pages and the grammar/topic headings through Lesson 18. The same contents section also lists post-lesson material: answer keys, strong/irregular verb forms and dictionary.
 
-Current evidence status:
+The PDF metadata available to the project reports 150 PDF pages. The contents pages themselves reference printed book pages through 218. Therefore **table-of-contents structure and page-level source evidence are separate concepts** and must not be conflated.
 
-- Route structure: **VERIFIED as project structure**.
-- 56 Unit source-map alignment: **SOURCE_ALIGNED**.
-- Lesson 1: **PAGE_VERIFIED**.
-- Lesson 2: **PAGE_VERIFIED**.
-- Lesson 3: **PAGE_VERIFIED**.
-- Lessons 4–12: **PAGE_VERIFIED** based on the page-inspection work recorded for the current source set.
-- Lesson 13: **PARTIAL_PAGE_VERIFIED** — available source reaches printed page 146, while the source map assigns Lesson 13 pages 140–149.
-- Lessons 14–18: **SOURCE_NOT_AVAILABLE_IN_CURRENT_PDF**.
-- LCP assessment components: **AUDIT_IN_PROGRESS**.
-- Section CP definitions: **MISSING / TO BE CREATED**.
+## Current status
 
-## Verification record
-
-The scanned PDF is image-based. Page verification is performed by direct inspection of rendered source pages. Automated text extraction is used only as a secondary aid and is not treated as authoritative where it is incomplete or garbled.
-
-The source map in `02_Source/Book.Course.Structure.v1.0.md` remains the canonical project map of the intended 18-lesson route, but the presence of a page range in that map does not prove that the corresponding pages are present in the currently available PDF.
+- Book structure from PDF contents: **VERIFIED**.
+- Project route: **18 Lessons / 56 Unit / 18 LCP / 5 CP** — project architecture, not book structure.
+- Unit-to-source alignment: **REQUIRES RE-AUDIT against the new single source map**.
+- LCP source coverage: **REQUIRES RE-AUDIT** after Unit alignment.
+- CP source coverage: **REQUIRES RE-AUDIT** after LCP alignment.
 
 ## Integrity rule
 
-The book does not define the project's Unit/LCP/CP architecture. Those boundaries remain explicit project design. Direct page verification establishes evidence for canonical source content; it does not imply that the author used our Unit boundaries.
+The book does not define our Unit/LCP/CP architecture. Those are project design decisions.
 
-Source-derived content must not be silently replaced by general linguistic knowledge, and project-added pedagogical material must remain identifiable.
+A project Unit may combine several headings from the book, but it must be traceable to the canonical source map. Project-added pedagogy must remain distinguishable from source-derived content.
 
-## Correction rule
+`PAGE_VERIFIED` may be assigned only after the corresponding source pages have actually been inspected. Existence of a topic in the contents page is sufficient for **TOC_CONFIRMED**, not automatically for **PAGE_VERIFIED**.
 
-No Unit, LCP or CP may be marked `PAGE_VERIFIED` solely because the project structure or a generated definition exists. Page verification requires the corresponding source pages to be present in the available source file.
+## Next verification sequence
+
+1. Re-audit all 56 Unit against this single source map.
+2. Correct Unit boundaries/content where necessary.
+3. Verify each Unit against the actual source pages available in the PDF.
+4. Re-audit all 18 LCP against the verified Unit coverage.
+5. Re-audit all 5 CP against the verified LCP/lesson coverage.
+6. Only then run the final end-to-end Progress/State Machine test again.
