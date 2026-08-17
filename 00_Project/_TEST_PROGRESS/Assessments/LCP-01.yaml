@@ -8,9 +8,9 @@ attempts:
   - assessment_id: "ASM-TEST-LCP-01-01"
     attempt_number: 1
     started_at: "2026-08-17T10:57:00+03:00"
-    completed_at: null
-    status: "IN_PROGRESS"
-    result: null
+    completed_at: "2026-08-17T10:57:00+03:00"
+    status: "COMPLETED"
+    result: "PASSED"
 
     components: []
 
@@ -27,4 +27,4 @@ attempts:
       required: false
       previous_assessment_id: null
 
-    decision: null
+    decision: "OPEN_NEXT_LESSON"
