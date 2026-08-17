@@ -1,44 +1,44 @@
 # LCP-18 — Lesson 18
 
-**Status:** Provisional canonical assessment design; source validation **PENDING — required source pages are not present in the current PDF**.  
+**Status:** `SOURCE_VERIFIED` — assessment design re-audited against the supplied complete PDF.  
 **Source lesson:** 18  
 **Covered Unit:** 18.1–18.4
 
 ## Purpose
-Проверить интегрированное использование языка в контексте отъезда и целевых конструкций нереальности согласно текущей проектной source-map/Unit definitions.
+Проверить интегрированное использование языка в контексте отъезда и аэропорта, письменной коммуникации, перфектного инфинитива и конструкций нереальности.
 
 ## Required competencies
-1. Лексика аэропорта при отъезде и письменной коммуникации.
+1. Лексика аэропорта и отъезда; письменная коммуникация.
 2. Перфектный инфинитив.
-3. Конструкции нереальности.
-4. `skulle` + инфинитив в значении нереальности.
-5. Связное письмо/описание биографического или ситуационного содержания.
+3. Претерит и плюсквамперфект со значением нереальности.
+4. `skulle` + инфинитив для выражения нереальности.
+5. Понимание страноведческого материала о всемирно известных шведах.
 
 ## Assessment components
 
-### A1 — Отъезд из аэропорта
-**Task:** выполнить текстовый сценарий подготовки к вылету и прохождения аэропортовой ситуации, включая вопросы и ответы.  
+### A1 — Отъезд из аэропорта и письмо
+**Task:** выполнить текстовый сценарий отъезда и написать короткое письмо по модели источника с корректным обращением и концовкой.
 **Verification:** `AI_VERIFIED`.
 
 ### A2 — Перфектный инфинитив
-**Task:** преобразовать заданные конструкции и использовать перфектный инфинитив в контексте.  
+**Task:** преобразовать заданные конструкции и употребить перфектный инфинитив в контексте.
 **Verification:** `AI_VERIFIED`.
 
 ### A3 — Нереальность
-**Task:** преобразовать несколько реальных ситуаций в конструкции нереальности и использовать `skulle` + инфинитив в самостоятельных примерах.  
+**Task:** преобразовать реальные ситуации в конструкции нереальности и использовать `skulle` + инфинитив по заданному смыслу.
 **Verification:** `AI_VERIFIED`.
 
-### A4 — Письмо
-**Task:** написать короткое связное письмо/сообщение по заданной ситуации с использованием нескольких целевых конструкций урока.  
+### A4 — Страноведческий материал
+**Task:** передать основное содержание материала о всемирно известных шведах и ответить на вопросы по нему.
 **Verification:** `AI_VERIFIED`.
 
 ## Success criteria
-Все обязательные компоненты имеют достаточное evidence. Содержательная source validation остаётся незавершённой до получения страниц Lesson 18.
+Все обязательные компоненты выполнены с допустимым evidence.
 
 ## Remediation / Recheck
-После source validation при необходимости скорректировать task scope, затем выполнить повторную проверку.
+Повторить только дефицитный блок и соответствующий компонент LCP.
 
 ## References
-Units 18.1–18.4; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
+Units 18.1–18.4; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; source pages 193–202.
 
-> **Design note:** assessment tasks are project-designed from the current Unit definitions and are not claimed to be source-derived until the missing source pages are verified.
+> **Source note:** body pages 193–202 are present in the newly supplied complete PDF and were used for this re-audit.
