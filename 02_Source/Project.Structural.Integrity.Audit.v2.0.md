@@ -1,8 +1,8 @@
 # Project Structural Integrity Audit
 
-**Version:** 2.0  
+**Version:** 2.1  
 **Date:** 2026-08-17  
-**Status:** `PASS / SOURCE_COMPLETE`
+**Status:** `PASS / SOURCE_COMPLETE / ASSESSMENT_COMPLETE`
 
 ## Canonical route
 
@@ -46,7 +46,7 @@ Each Lesson has one LCP:
 
 `LCP-01 … LCP-18`
 
-LCP-14 through LCP-18 were explicitly re-audited after recovery of the previously missing source pages and are now marked `SOURCE_VERIFIED`.
+LCP-14 through LCP-18 were re-audited after recovery of the previously missing source pages and are now source-verified.
 
 ## CP chain
 
@@ -61,7 +61,7 @@ LCP-14 through LCP-18 were explicitly re-audited after recovery of the previousl
 - One canonical book map: PASS.
 - Legacy Unit source claims reset/re-audited: PASS.
 - Complete supplied PDF available: PASS.
-- All 56 Units mapped to available body pages: PASS.
+- All 56 Units mapped to verified body pages: PASS.
 - Missing source pages: NONE.
 - Source-gap register: CLOSED.
 
@@ -74,12 +74,16 @@ LCP-14 through LCP-18 were explicitly re-audited after recovery of the previousl
 
 ## Assessment state
 
-- LCP-01…LCP-13: existing assessment layer retained and source-aligned.
-- LCP-14…LCP-18: source-verified and re-audited against recovered pages.
-- CP-1…CP-5: structural chain intact; semantic CP audit remains a separate assessment-layer task and is not used as evidence for Unit source verification.
+- LCP-01…LCP-18: source-supported assessment layer exists.
+- CP-1…CP-5: semantic assessment audit completed with result `PASS`.
+- Every CP now defines task, expected evidence, verification mode and component success criterion for mandatory components.
+- Every CP contains an explicit transfer/integration component.
+- CP remediation/recheck logic is defined.
 
-## Final source conclusion
+## Final structural conclusion
 
-The former limitation was caused by an incomplete PDF, not by an unresolved course-map conflict. The newly supplied complete PDF closes that limitation. The project can now proceed continuously through the full route:
+The source, route and assessment architecture are internally consistent at the canonical-definition level:
 
-`PDF → unified map → Lesson 1 → Units → LCP-01 → Lesson 2 → … → Lesson 18 → LCP → CP`.
+`PDF → unified map → Lesson → Unit → LCP → CP`
+
+No source gap currently blocks further testing.
