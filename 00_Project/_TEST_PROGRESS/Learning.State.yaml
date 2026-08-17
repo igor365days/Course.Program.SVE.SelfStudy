@@ -1,8 +1,8 @@
 schema_version: "1.1"
 project: "Course.Program.SVE.SelfStudy"
 progress_status: "IN_PROGRESS"
-updated_at: "2026-08-17T09:54:00+03:00"
-last_event_id: "EVT-TEST-004"
+updated_at: "2026-08-17T10:00:00+03:00"
+last_event_id: "EVT-TEST-008"
 last_assessment_id: null
 
 current:
@@ -11,19 +11,20 @@ current:
   unit_id: "1.2"
   control_type: null
   control_id: null
-  phase: "REMEDIATION"
-  status: "FAILED"
+  phase: "UNIT"
+  status: "PASSED"
 
 completed:
   units:
     - "1.1"
+    - "1.2"
   lcps: []
   cps: []
 
 remediation:
-  active: true
-  target_type: "UNIT"
-  target_id: "1.2"
+  active: false
+  target_type: null
+  target_id: null
   reason_ids: []
 
 blocking:
@@ -32,6 +33,6 @@ blocking:
   required_action: null
 
 next_action:
-  action: "REMEDIATION"
+  action: "START_UNIT"
   target_type: "UNIT"
-  target_id: "1.2"
+  target_id: "1.3"
