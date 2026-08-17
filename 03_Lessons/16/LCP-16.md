@@ -1,44 +1,43 @@
 # LCP-16 — Lesson 16
 
-**Status:** Provisional canonical assessment design; source validation **PENDING — required source pages are not present in the current PDF**.  
+**Status:** `SOURCE_VERIFIED` — assessment design re-audited against the supplied complete PDF.  
 **Source lesson:** 16  
 **Covered Unit:** 16.1–16.4
 
 ## Purpose
-Проверить интегрированное использование лексики вокзала и Швеции и целевых грамматических конструкций согласно текущей проектной source-map/Unit definitions.
+Проверить интегрированное использование вокзальной и страноведческой лексики, причастия II, пассивных конструкций и глаголов `tro`, `tycka`, `tänka`.
 
 ## Required competencies
-1. Лексика железнодорожного вокзала, направлений и Швеции.
-2. Причастие II.
-3. `bli` и `vara` в пассивных/состояниевых конструкциях.
+1. Лексика вокзала, направлений и Швеции.
+2. Причастие II и согласование.
+3. Пассивные конструкции с `vara` и `bli`.
 4. Различение `tro`, `tycka`, `tänka`.
-5. Основные направления/стороны света в тематическом контексте.
 
 ## Assessment components
 
-### A1 — Вокзал
-**Task:** выполнить текстовый сценарий покупки билета/поиска поезда и ориентирования на вокзале.  
+### A1 — Вокзал и направления
+**Task:** выполнить текстовый сценарий на вокзале и решить задачу ориентирования с использованием направлений и сторон света.
 **Verification:** `AI_VERIFIED`.
 
 ### A2 — Причастие II
-**Task:** образовать и использовать формы причастия II в заданных контекстах и исправить ошибки в формах.  
+**Task:** образовать и употребить формы причастия II в заданных контекстах, соблюдая согласование.
 **Verification:** `AI_VERIFIED`.
 
-### A3 — `bli/vara`
-**Task:** преобразовать предложения между конструкциями с `bli` и `vara` в соответствии с заданным смыслом результата/состояния.  
+### A3 — `vara` / `bli`
+**Task:** преобразовать предложения между изученными пассивными моделями с `vara` и `bli` в соответствии со значением состояния или процесса.
 **Verification:** `AI_VERIFIED`.
 
-### A4 — `tro/tycka/tänka` и Швеция
-**Task:** выполнить короткое связное задание о поездке/Швеции, правильно различая `tro`, `tycka`, `tänka` и используя лексику направлений.  
+### A4 — `tro` / `tycka` / `tänka`
+**Task:** выбрать и употребить подходящий глагол в серии контекстов и в коротком сообщении о Швеции.
 **Verification:** `AI_VERIFIED`.
 
 ## Success criteria
-Все обязательные компоненты имеют достаточное evidence. Содержательная source validation остаётся незавершённой до получения страниц Lesson 16.
+Все обязательные компоненты выполнены с допустимым evidence.
 
 ## Remediation / Recheck
-После source validation при необходимости скорректировать task scope, затем выполнить повторную проверку.
+Повторить только дефицитный блок и соответствующий компонент LCP.
 
 ## References
-Units 16.1–16.4; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
+Units 16.1–16.4; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; source pages 172–182.
 
-> **Design note:** assessment tasks are project-designed from the current Unit definitions and are not claimed to be source-derived until the missing source pages are verified.
+> **Source note:** body pages 172–182 are present in the newly supplied complete PDF and were used for this re-audit.
