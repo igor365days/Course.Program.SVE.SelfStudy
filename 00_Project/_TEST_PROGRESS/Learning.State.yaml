@@ -2,7 +2,7 @@ schema_version: "1.1"
 project: "Course.Program.SVE.SelfStudy"
 progress_status: "IN_PROGRESS"
 updated_at: "2026-08-17T10:57:00+03:00"
-last_event_id: "EVT-TEST-015"
+last_event_id: "EVT-TEST-016"
 last_assessment_id: "ASM-TEST-LCP-01-01"
 
 current:
@@ -12,7 +12,7 @@ current:
   control_type: "LCP"
   control_id: "LCP-01"
   phase: "LCP"
-  status: "IN_PROGRESS"
+  status: "PASSED"
 
 completed:
   units:
@@ -21,7 +21,8 @@ completed:
     - "1.3"
     - "1.4"
     - "1.5"
-  lcps: []
+  lcps:
+    - "LCP-01"
   cps: []
 
 remediation:
@@ -36,6 +37,6 @@ blocking:
   required_action: null
 
 next_action:
-  action: "COMPLETE_LCP"
-  target_type: "LCP"
-  target_id: "LCP-01"
+  action: "START_UNIT"
+  target_type: "UNIT"
+  target_id: "2.1"
