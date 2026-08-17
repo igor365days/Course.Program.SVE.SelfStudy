@@ -1,10 +1,18 @@
 # Course Structure Manifest
 
 **Course:** `Course.Program.SVE.SelfStudy`  
-**Status:** Pre-launch structural baseline v1.1  
-**Purpose:** каноническая карта маршрута после сверки с загруженным источником книги.
+**Status:** Pre-launch structural baseline v1.2  
+**Purpose:** каноническая карта **проектного маршрута**.
 
-Полная source-derived карта: `02_Source/Book.Course.Structure.v1.0.md`.
+## Source of book content
+
+Единственная каноническая карта книги:
+
+`02_Source/Book.Course.Structure.v1.0.md`
+
+Она построена непосредственно по присланному PDF и описывает только структуру и содержание книги.
+
+Этот Manifest не является второй картой книги. Он описывает только проектную архитектуру `Lesson → Unit → LCP → CP`.
 
 ## Route
 
@@ -69,9 +77,9 @@ Lesson → Unit → LCP → Lesson → … → LCP → CP → next Section
 
 ## Integrity rules
 
-- Unit count may differ between lessons; it is determined by the source material and the project decomposition.
-- Every Unit belongs to exactly one source lesson and one LCP.
+- Unit count may differ between lessons; it is a project decomposition of the source material and is not claimed to be the author's own Unit structure.
+- Every Unit belongs to exactly one source Lesson and one LCP.
 - Every Lesson ends with its LCP.
-- Every section ends with its CP.
-- Unit boundaries must not be silently merged, split or reordered after this baseline is adopted.
+- Every Section ends with its CP.
+- Unit boundaries are project design and may be changed only through an explicit architectural decision after source re-audit.
 - Detailed Unit files remain canonical learning definitions; this manifest is the route authority.
