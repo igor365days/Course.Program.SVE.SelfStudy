@@ -1,39 +1,39 @@
 # LCP-17 — Lesson 17
 
-**Status:** Provisional canonical assessment design; source validation **PENDING — required source pages are not present in the current PDF**.  
+**Status:** `SOURCE_VERIFIED` — assessment design re-audited against the supplied complete PDF.  
 **Source lesson:** 17  
 **Covered Unit:** 17.1–17.2
 
 ## Purpose
-Проверить интегрированное использование лексики шведских праздников и целевых конструкций с причастием II, постглагольными частицами и наречиями.
+Проверить интегрированное использование лексики шведских праздников, причастия II от глаголов с постглагольными частицами, глаголов с частицами и наречий `först` и `bara`.
 
 ## Required competencies
-1. Лексика шведских праздников.
-2. Причастие II с постглагольными частицами.
-3. Глаголы с постглагольными частицами.
-4. Употребление `först` и `bara` в целевых контекстах.
+1. Лексика и содержание материалов о шведских праздниках.
+2. Причастие II от глаголов с постглагольными частицами.
+3. Глаголы с постглагольными частицами и приставками.
+4. Различение и употребление `först` и `bara`.
 
 ## Assessment components
 
 ### A1 — Праздники
-**Task:** выполнить связное текстовое задание о шведском празднике: описать события, время и последовательность действий.  
+**Task:** выполнить связное текстовое задание о шведском празднике с использованием ключевой лексики источника.
 **Verification:** `AI_VERIFIED`.
 
 ### A2 — Причастие II и частицы
-**Task:** образовать и использовать целевые формы причастия II с постглагольными частицами в контексте.  
+**Task:** образовать и употребить формы причастия II от глаголов с постглагольными частицами.
 **Verification:** `AI_VERIFIED`.
 
-### A3 — Постглагольные глаголы и наречия
-**Task:** выбрать/образовать правильные формы глаголов с частицами и использовать `först` и `bara` в серии контекстных предложений.  
+### A3 — Глаголы с частицами и наречия
+**Task:** выбрать правильные глагольные модели и употребить `först` и `bara` в контекстных предложениях.
 **Verification:** `AI_VERIFIED`.
 
 ## Success criteria
-Все обязательные компоненты имеют достаточное evidence. Содержательная source validation остаётся незавершённой до получения страниц Lesson 17.
+Все обязательные компоненты выполнены с допустимым evidence.
 
 ## Remediation / Recheck
-После source validation при необходимости скорректировать task scope, затем выполнить повторную проверку.
+Повторить только дефицитный блок и соответствующий компонент LCP.
 
 ## References
-Units 17.1–17.2; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; `Course.Structure.Audit.md`.
+Units 17.1–17.2; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`; source pages 183–192.
 
-> **Design note:** assessment tasks are project-designed from the current Unit definitions and are not claimed to be source-derived until the missing source pages are verified.
+> **Source note:** body pages 183–192 are present in the newly supplied complete PDF and were used for this re-audit.
