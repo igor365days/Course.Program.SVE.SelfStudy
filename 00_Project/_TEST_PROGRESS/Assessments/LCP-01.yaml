@@ -53,3 +53,27 @@ attempts:
       previous_assessment_id: "ASM-TEST-LCP-01-01"
 
     decision: "REMEDIATION_REQUIRED"
+
+  - assessment_id: "ASM-TEST-LCP-01-03"
+    attempt_number: 3
+    started_at: "2026-08-17T11:10:00+03:00"
+    completed_at: "2026-08-17T11:10:00+03:00"
+    status: "COMPLETED"
+    result: "PASSED"
+
+    components: []
+
+    summary:
+      strengths: []
+      deficiencies: []
+
+    remediation:
+      required: false
+      target_ids: []
+      reason_ids: []
+
+    recheck:
+      required: false
+      previous_assessment_id: "ASM-TEST-LCP-01-02"
+
+    decision: "OPEN_NEXT_LESSON"
