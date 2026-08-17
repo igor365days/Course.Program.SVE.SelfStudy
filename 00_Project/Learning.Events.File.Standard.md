@@ -32,7 +32,7 @@
   "type": "UNIT_STARTED",
   "section_id": "S01",
   "lesson_id": "L01",
-  "unit_id": "U01.01",
+  "unit_id": "1.1",
   "control_type": null,
   "control_id": null,
   "assessment_id": null,
@@ -76,10 +76,6 @@ CP_COMPLETED
 Новые типы нельзя вводить в исторический Progress без изменения канонического стандарта.
 
 ## 6. Допустимые значения result
-
-`result` является результатом события, а не универсальным статусом записи.
-
-Разрешены:
 
 ```text
 PASSED
@@ -193,9 +189,9 @@ EVT-000002
 ## 13. Примеры
 
 ```json
-{"event_id":"EVT-000001","timestamp":"2026-08-17T08:00:00Z","type":"UNIT_STARTED","section_id":"S01","lesson_id":"L01","unit_id":"U01.01","control_type":null,"control_id":null,"assessment_id":null,"result":null,"verification":null,"actor":"LEARNING","summary":"Unit started"}
-{"event_id":"EVT-000002","timestamp":"2026-08-17T08:20:00Z","type":"UNIT_VERIFIED","section_id":"S01","lesson_id":"L01","unit_id":"U01.01","control_type":null,"control_id":null,"assessment_id":null,"result":"PASSED","verification":"AI_VERIFIED","actor":"LEARNING","summary":"Unit verification passed"}
-{"event_id":"EVT-000003","timestamp":"2026-08-17T08:30:00Z","type":"USER_CONFIRMED","section_id":"S01","lesson_id":"L01","unit_id":"U01.01","control_type":"LCP","control_id":"LCP-01","assessment_id":"ASM-LCP-01-01","result":"ACCEPTED","verification":"USER_CONFIRMED","actor":"USER","summary":"Required pronunciation task confirmed"}
+{"event_id":"EVT-000001","timestamp":"2026-08-17T08:00:00Z","type":"UNIT_STARTED","section_id":"S01","lesson_id":"L01","unit_id":"1.1","control_type":null,"control_id":null,"assessment_id":null,"result":null,"verification":null,"actor":"LEARNING","summary":"Unit started"}
+{"event_id":"EVT-000002","timestamp":"2026-08-17T08:20:00Z","type":"UNIT_VERIFIED","section_id":"S01","lesson_id":"L01","unit_id":"1.1","control_type":null,"control_id":null,"assessment_id":null,"result":"PASSED","verification":"AI_VERIFIED","actor":"LEARNING","summary":"Unit verification passed"}
+{"event_id":"EVT-000003","timestamp":"2026-08-17T08:30:00Z","type":"USER_CONFIRMED","section_id":"S01","lesson_id":"L01","unit_id":"1.1","control_type":"LCP","control_id":"LCP-01","assessment_id":"ASM-LCP-01-01","result":"ACCEPTED","verification":"USER_CONFIRMED","actor":"USER","summary":"Required pronunciation task confirmed"}
 ```
 
 ## 14. Отчётность
