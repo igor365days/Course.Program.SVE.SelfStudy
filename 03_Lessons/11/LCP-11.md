@@ -1,20 +1,42 @@
 # LCP-11 — Lesson 11
 
-**Status:** Provisional canonical baseline; source-content validation pending.
-**Source lesson:** 11
+**Status:** Provisional canonical assessment design; source-content validation status follows `Course.Structure.Audit.md`.  
+**Source lesson:** 11  
 **Covered Unit:** 11.1–11.2
 
 ## Purpose
-Проверить описание погоды и коммуникацию о месте, направлении и планах.
+Проверить интегрированное описание погоды, места, направления и планов на будущее в практической коммуникации.
 
 ## Required competencies
-Погода; будущее; man; безличные конструкции; место/направление.
+1. Лексика погоды и природных условий.
+2. Конструкции будущего времени.
+3. `man` и безличные конструкции.
+4. Наречия места и направления.
+5. `kunna`, `veta`, `känna`.
 
 ## Assessment components
-Обязательные компоненты; verification `AI_VERIFIED` или `USER_CONFIRMED` по evidence.
+
+### A1 — Погода и прогноз
+**Task:** описать текущую/будущую погоду и ответить на вопросы о погодных условиях в нескольких ситуациях.  
+**Verification:** `AI_VERIFIED`.
+
+### A2 — Будущее
+**Task:** сформулировать планы на ближайшее будущее с несколькими конструкциями будущего времени и преобразовать заданные предложения.  
+**Verification:** `AI_VERIFIED`.
+
+### A3 — `man` и безличные конструкции
+**Task:** преобразовать несколько личных формулировок в естественные конструкции с `man` и безличные предложения, где это требуется.  
+**Verification:** `AI_VERIFIED`.
+
+### A4 — Ориентирование
+**Task:** дать и понять текстовое описание маршрута с наречиями места/направления и объяснить, как пройти к указанному месту.  
+**Verification:** `AI_VERIFIED`.
 
 ## Success criteria
-Все обязательные компоненты подтверждены.
+Все обязательные компоненты имеют достаточное `AI_VERIFIED` evidence; обучающийся способен объединить погодную, пространственную и будущую тематику в связной коммуникации.
 
 ## Remediation / Recheck
-Точечная коррекция и recheck.
+Повторить дефицитный блок и повторить соответствующий компонент.
+
+## References
+Units 11.1–11.2; `Lesson.Checkpoint.Definition.Standard.md`; `Assessment.Verification.Policy.md`.
