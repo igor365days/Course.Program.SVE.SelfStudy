@@ -1,84 +1,25 @@
 # Canonical Lesson Definitions
 
-## Назначение
+`03_Lessons/` contains the canonical definitions for 56 Unit, 18 LCP and 5 CP. The route is based on the 18 lessons of the uploaded source book.
 
-Каталог `03_Lessons` содержит канонические определения всех **56 Unit** и **5 контрольных точек** курса `Course.Program.SVE.SelfStudy`.
+## Important
 
-Это не журнал прохождения обучения и не история работы пользователя.
+The book itself does not use our Unit/LCP/CP architecture. Unit boundaries are a project decomposition of its thematic and grammatical blocks. The source-derived structure is recorded in `02_Source/Book.Course.Structure.v1.0.md`.
 
-## Архитектура
+## Section route
 
-Каждая Unit принадлежит ровно одному из пяти разделов. Unit внутри раздела идут строго последовательно. После последней Unit раздела следует его CP.
+| Section | Lessons | Units | CP |
+|---|---|---:|---|
+| 1. Основы шведского языка | 1–4 | 17 | CP-1 |
+| 2. Повседневная коммуникация | 5–8 | 12 | CP-2 |
+| 3. Путешествия и ориентирование | 9–11 | 8 | CP-3 |
+| 4. Общественные и культурные ситуации | 12–15 | 9 | CP-4 |
+| 5. Швеция, культура и продвинутые грамматические темы | 16–18 | 10 | CP-5 |
 
-```text
-03_Lessons/
-├── 01_Foundation/
-│   ├── 1.1.md ... 4.4.md
-│   └── CP-1.md
-├── 02_Everyday_Communication/
-│   ├── 5.1.md ... 8.3.md
-│   └── CP-2.md
-├── 03_Travel_Orientation/
-│   ├── 9.1.md ... 11.2.md
-│   └── CP-3.md
-├── 04_Social_Cultural/
-│   ├── 12.1.md ... 15.3.md
-│   └── CP-4.md
-└── 05_Sweden_Culture_Advanced/
-    ├── 16.1.md ... 18.4.md
-    └── CP-5.md
-```
+## Standard
 
-## Разделы
+Every Unit file follows `00_Project/Unit.Definition.Standard.md`. Every LCP/CP follows the corresponding checkpoint standard. These files define learning requirements and route position, not learner progress.
 
-| Раздел | Источниковые уроки | Unit | CP |
-|---|---|---|---|
-| 01 | 1–4 | 17 | CP-1 |
-| 02 | 5–8 | 12 | CP-2 |
-| 03 | 9–11 | 8 | CP-3 |
-| 04 | 12–15 | 9 | CP-4 |
-| 05 | 16–18 | 10 | CP-5 |
+## Route
 
-## Стандарт Unit
-
-Каждый файл Unit должен соответствовать `00_Project/Unit.Definition.Standard.md` и определять:
-
-- Identity;
-- Section and route position;
-- Source lesson;
-- Learning Objective;
-- Canonical Content;
-- Learning Sequence;
-- Practice Requirements;
-- Verification Criteria;
-- Typical Difficulties;
-- Transition;
-- Canonical References.
-
-Файл описывает **план и требования к обучению**, а не фактический результат конкретного пользователя.
-
-## Стандарт Checkpoint
-
-CP является каноническим элементом маршрута и завершает соответствующий раздел.
-
-Его определение содержит:
-
-- Unit, которые он охватывает;
-- цели интеграционной проверки;
-- проверяемые знания и навыки;
-- формат проверки;
-- критерии прохождения;
-- правила корректирующей работы;
-- условия открытия следующего раздела.
-
-## Правило маршрута
-
-```text
-Unit → Unit → ... → Unit → CP
-                         │
-                         ├─ FAIL → remediation → recheck
-                         │
-                         └─ PASS → next section
-```
-
-Unit нельзя пропускать ради удобства ChatGPT Project. Фактический прогресс, ошибки, даты и история чатов находятся вне `03_Lessons`.
+`Unit → … → LCP → next Lesson`; at section boundary `LCP → CP → next Section`.

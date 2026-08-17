@@ -1,80 +1,41 @@
 # Course Structure Audit
 
-**Status:** Pre-launch working audit  
-**Version:** 0.1
+**Status:** Pre-launch source-verified structural baseline  
+**Version:** 1.1
 
-## Purpose
+## Result
 
-Проверить согласованность структуры курса до продолжения сквозного тестирования Orchestrator, State Machine, Progress и Assessment.
+The complete uploaded book is now available as the source basis. Its contents page identifies 18 lessons, with source pagination from Lesson 1 through Lesson 18.
 
-## Confirmed structure
+The canonical route contains 18 lessons, 56 Unit, 18 LCP and 5 CP. Unit counts are variable by lesson and match the existing route allocation.
 
-По текущей канонической программе `Course.Program.SVE.SelfStudy v1.0` определены:
+## Source-derived decomposition
 
-- 18 исходных уроков;
-- 56 Unit;
-- 18 LCP;
-- 5 CP.
+The detailed map is `02_Source/Book.Course.Structure.v1.0.md`. It records each lesson title, source page range, Unit grouping and canonical LCP.
 
-Распределение Unit:
+## Important distinction
 
-| Lesson | Unit | LCP |
-|---|---:|---|
-| 1 | 5 | LCP-01 |
-| 2 | 4 | LCP-02 |
-| 3 | 4 | LCP-03 |
-| 4 | 4 | LCP-04 |
-| 5 | 3 | LCP-05 |
-| 6 | 3 | LCP-06 |
-| 7 | 3 | LCP-07 |
-| 8 | 3 | LCP-08 |
-| 9 | 4 | LCP-09 |
-| 10 | 2 | LCP-10 |
-| 11 | 2 | LCP-11 |
-| 12 | 2 | LCP-12 |
-| 13 | 2 | LCP-13 |
-| 14 | 2 | LCP-14 |
-| 15 | 3 | LCP-15 |
-| 16 | 4 | LCP-16 |
-| 17 | 2 | LCP-17 |
-| 18 | 4 | LCP-18 |
+The book does not define our Unit/LCP/CP architecture. The 56 Unit are a deliberate project decomposition of the book's thematic and grammatical blocks. Therefore: source titles/topics are source-derived; Unit boundaries, learning objectives, verification requirements and checkpoint architecture are project design.
 
-**Total: 56 Unit.**
+## Current canonical status
 
-## Important correction
-
-В `Course.Program.SVE.SelfStudy.v1.0.md` в итоговой таблице указано `49` Unit. Это арифметическая/редакционная ошибка: перечисленные в самом документе Unit дают 56.
-
-Канонический `COURSE.MANIFEST.md` и `Course.Program.SVE.SelfStudy.md` уже используют согласованное значение 56.
-
-## Current implementation
-
-Созданы канонические Unit-файлы для всех 56 Unit в:
-
-`03_Lessons/01/` … `03_Lessons/18/`
-
-Созданы структурные определения:
-
-- `LCP-01` … `LCP-18`;
-- `CP-1` … `CP-5`.
-
-LCP/CP пока имеют статус **Provisional canonical baseline**. Их обязательные Assessment Components требуют окончательной проверки по исходному содержанию книги.
-
-## Source limitation
-
-В репозитории отсутствует полный текст/скан исходной книги. `02_Source/Book.Analysis.md` содержит предварительный анализ, а подробное содержание Unit в текущей программе основано на уже разработанной версии `Course.Program.SVE.SelfStudy v1.0`.
-
-Поэтому текущие Unit definitions являются рабочим каноническим baseline, но не утверждением о полном постраничном соответствии книге.
+- Route: structurally defined.
+- 18 Lesson directories: present.
+- 56 Unit files: present.
+- 18 LCP files: present.
+- 5 CP files: present.
+- Detailed Unit content: aligned to the source-derived structure at the map level; individual Unit definitions remain subject to subsequent detailed content/verification audit.
+- Assessment components of LCP/CP: still require explicit source-based verification before full-course Validation.
 
 ## Next phase
 
-1. Получить полный доступный исходный материал книги.
-2. Последовательно проверить Lesson 1–18.
-3. Для каждого Unit проверить границы, содержание, зависимости, практику и verification coverage.
-4. Уточнить обязательные Assessment Components каждого LCP и CP по фактическому содержанию.
-5. Только после этой проверки перевести соответствующие LCP/CP из provisional baseline в окончательные канонические определения.
-6. Затем выполнить финальный полный Validation курса и продолжить сквозное тестирование.
+1. Validate each Lesson 1–18 against the source pages.
+2. Validate each Unit boundary and canonical content.
+3. Define complete verification coverage for every Unit.
+4. Define mandatory Assessment Components for every LCP and CP.
+5. Run full structural and Progress Validation.
+6. Continue the isolated State Machine/Orchestrator tests from the current test state.
 
 ## Integrity rule
 
-Нельзя выдумывать отсутствующее содержание книги ради заполнения структуры. Внешний материал должен быть явно обозначен как дополнительный.
+No source content is to be invented to fill gaps. Any external pedagogical addition must be explicitly marked as project-added material.
