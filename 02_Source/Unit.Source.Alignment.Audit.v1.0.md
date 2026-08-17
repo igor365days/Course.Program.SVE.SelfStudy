@@ -1,49 +1,28 @@
 # Unit Source Alignment Audit
 
-**Version:** 2.3  
-**Status:** `PARTIALLY_REBUILT`  
+**Version:** 2.4  
+**Status:** `AVAILABLE_SOURCE_REBUILT`  
 **Source:** `02_Source/Book.Course.Structure.v1.0.md`  
 **Date:** 2026-08-17
 
 ## Purpose
 
-This audit controls the rebuild of Unit-to-book alignment after eliminating the previous dual-map situation.
-
-The 56 Unit files are project design artifacts. They are **not** evidence of what the book contains. Source alignment is established against the single canonical book map and, where possible, direct inspection of the supplied PDF pages.
+This audit controls Unit-to-book alignment against the single canonical book map and direct inspection of the supplied PDF.
 
 ## Current result
 
-Three direct re-audit batches are complete:
+For every Unit whose required body pages are present in the supplied PDF, the direct source re-audit is complete.
 
-- **33 Units `PAGE_VERIFIED`** — Lessons 1–9.
-- **2 Units `PARTIAL_PAGE_VERIFIED`** — Lesson 13, because only printed pages 140–146 are present.
-- **6 Units `REBUILD_REQUIRED`** — Lessons 10–12.
+- **40 Units `PAGE_VERIFIED`** — Lessons 1–12 plus Unit 13.1.
+- **1 Unit `PARTIAL_PAGE_VERIFIED`** — Unit 13.2.
 - **15 Units `SOURCE_NOT_AVAILABLE`** — Lessons 14–18.
+- **0 Units `REBUILD_REQUIRED`** within the currently available source.
 
 Total: **56 Units**.
 
-## Verified batches
+## Lesson inventory
 
-### Lessons 1–3
-13 Units directly checked.
-
-### Lessons 4–6
-10 Units directly checked. Legacy broad page ranges were narrowed to actual source blocks where appropriate.
-
-### Lessons 7–9
-10 Units directly checked. Several Unit ranges are non-contiguous because the book separates grammar blocks from thematic vocabulary and practice sections.
-
-## Status vocabulary
-
-- `REBUILD_REQUIRED` — the Unit must be rechecked against the canonical source map.
-- `PAGE_VERIFIED` — direct inspection of the corresponding source pages in the current PDF supports the Unit's canonical content.
-- `PARTIAL_PAGE_VERIFIED` — only part of the required source range is available.
-- `SOURCE_NOT_AVAILABLE` — the required book pages are outside the current PDF.
-- `PROJECT_ONLY` — content is project-added and must not be presented as book-derived.
-
-## Unit inventory
-
-| Lesson | Units | Current status |
+| Lesson | Units | Status |
 |---|---|---|
 | 1 | 1.1–1.5 | `PAGE_VERIFIED` |
 | 2 | 2.1–2.4 | `PAGE_VERIFIED` |
@@ -54,10 +33,10 @@ Total: **56 Units**.
 | 7 | 7.1–7.3 | `PAGE_VERIFIED` |
 | 8 | 8.1–8.3 | `PAGE_VERIFIED` |
 | 9 | 9.1–9.4 | `PAGE_VERIFIED` |
-| 10 | 10.1–10.2 | `REBUILD_REQUIRED` |
-| 11 | 11.1–11.2 | `REBUILD_REQUIRED` |
-| 12 | 12.1–12.2 | `REBUILD_REQUIRED` |
-| 13 | 13.1–13.2 | `PARTIAL_PAGE_VERIFIED` |
+| 10 | 10.1–10.2 | `PAGE_VERIFIED` |
+| 11 | 11.1–11.2 | `PAGE_VERIFIED` |
+| 12 | 12.1–12.2 | `PAGE_VERIFIED` |
+| 13 | 13.1 | `PAGE_VERIFIED`; 13.2 `PARTIAL_PAGE_VERIFIED` |
 | 14 | 14.1–14.2 | `SOURCE_NOT_AVAILABLE` |
 | 15 | 15.1–15.3 | `SOURCE_NOT_AVAILABLE` |
 | 16 | 16.1–16.4 | `SOURCE_NOT_AVAILABLE` |
@@ -68,36 +47,49 @@ Total: **56 Units**.
 
 The current PDF contains printed pages through **146**.
 
+The book's table of contents states:
+
+- Lesson 13: pp. 140–149;
+- Lesson 14: pp. 150–160;
+- Lesson 15: pp. 161–171;
+- Lesson 16: pp. 172–182;
+- Lesson 17: pp. 183–192;
+- Lesson 18: pp. 193–202.
+
 Therefore:
 
-- Lessons 1–12 can be fully re-audited against the current PDF.
-- Lesson 13 can be re-audited only where evidence falls within pages 140–146.
+- Unit 13.1 is fully supported by available pages 140–141.
+- Unit 13.2 is only partially supported because its comparison block continues into missing pages 147–149.
 - Lessons 14–18 cannot receive body-level source verification until the missing pages are supplied.
 
-## Rebuild method
+## Verified Unit batches
 
-For every Unit the audit must establish:
+### Lessons 1–3
+13 Units directly checked.
 
-1. Unit ID.
-2. Source Lesson.
-3. Exact item(s) from `Book.Course.Structure.v1.0.md` represented by the Unit.
-4. Exact printed page range.
-5. PDF page number(s), where useful.
-6. Direct source evidence.
-7. Source-derived content versus project-added pedagogy.
-8. Verification status.
-9. Transition to the next Unit.
+### Lessons 4–6
+10 Units directly checked, with legacy broad page ranges narrowed to actual source blocks.
 
-## Non-negotiable rule
+### Lessons 7–9
+10 Units directly checked, including separated grammar/vocabulary blocks.
 
-A broad Lesson page range is not an adequate Unit citation. The final matrix must point each Unit to the smallest useful source range that supports its content.
+### Lessons 10–12
+6 Units directly checked, including transport/hotel, future/weather/orientation, bank/post and the associated grammar blocks.
 
-## Legacy material
+### Lesson 13
+`13.1` directly checked on pp. 140–141. `13.2` partially checked on pp. 141–146; missing pp. 147–149 remain explicit.
 
-Existing Unit files may contain useful project work, but any legacy source claim is provisional until its Unit appears in the traceability matrix with a defensible status.
+## Integrity rules
 
-No legacy assertion may override the canonical PDF map.
+1. A project Unit file is not evidence of book content by itself.
+2. A Lesson-level page range is not an exact Unit citation.
+3. A Unit can be `PAGE_VERIFIED` only when every source page needed for its canonical content is present and directly inspected.
+4. A Unit requiring a missing page cannot be promoted to `PAGE_VERIFIED`.
+5. Source-derived content and project-added pedagogy must remain distinguishable.
+6. No legacy source alignment statement overrides the canonical book map or this audit.
 
-## Completion criterion
+## Next stage
 
-The audit is complete only when `REBUILD_REQUIRED` is zero and every Unit has a defensible terminal status.
+The Unit layer is now rebuilt for the currently available source. The next work package is the **LCP layer**, followed by the **CP layer**.
+
+LCPs and CPs covering Lessons 14–18 must remain explicitly provisional until the missing source pages are recovered.
